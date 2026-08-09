@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "description": "AIが生成しがちな過剰装飾・ハードコードを防ぐ禁止パターン集。/ban-pattern で追記していく。",
+    "lastUpdated": "2026-08-07"
+  },
+  "rules": [
+    {
+      "id": "no-heavy-shadow",
+      "pattern": "shadow-lg|shadow-xl|shadow-2xl",
+      "type": "tailwind-class",
+      "reason": "AIは過剰に強いシャドウを多用しがち。shadow-sm/shadow を優先する。",
+      "severity": "error"
+    },
+    {
+      "id": "no-hardcoded-text-color",
+      "pattern": "text-black|text-white",
+      "type": "tailwind-class",
+      "reason": "tokens.json のneutralカラーを使用し、直書きの黒白を避ける。",
+      "severity": "error"
+    },
+    {
+      "id": "no-arbitrary-hex-color",
+      "pattern": "(bg|text|border)-\\[#[0-9a-fA-F]{3,6}\\]",
+      "type": "tailwind-arbitrary",
+      "reason": "任意色の直書きはSSOT(tokens.json)を破壊する。トークン経由の色クラスを使う。",
+      "severity": "error"
+    },
+    {
+      "id": "no-gradient-decoration",
+      "pattern": "bg-gradient-to-",
+      "type": "tailwind-class",
+      "reason": "AIが理由なく多用しがちな装飾的グラデーションを禁止。",
+      "severity": "warning"
+    },
+    {
+      "id": "no-heavy-color-bar",
+      "pattern": "border-t-4|border-t-8|border-l-4|border-l-8",
+      "type": "tailwind-class",
+      "reason": "AIっぽい太いカラーバー装飾を禁止。",
+      "severity": "warning"
+    },
+    {
+      "id": "no-excessive-rounded",
+      "pattern": "rounded-2xl|rounded-3xl|rounded-full",
+      "type": "tailwind-class",
+      "reason": "過剰な角丸はブランドトーンから逸脱しやすい。tokens.jsonのradiusスケールを優先する。",
+      "severity": "warning"
+    },
+    {
+      "id": "no-inline-style-hardcode",
+      "pattern": "style=\\{\\{",
+      "type": "jsx-pattern",
+      "reason": "インラインstyleでの直書きはトークン管理を回避してしまうため禁止。",
+      "severity": "error"
+    }
+  ]
+}

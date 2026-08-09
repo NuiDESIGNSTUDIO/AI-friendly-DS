@@ -1,0 +1,521 @@
+{
+  "meta": {
+    "source": "Figma metadata scan (canvas '02_Icon', Font Awesome based icon set)",
+    "figmaFile": "https://www.figma.com/design/3IHJOBCeBTUrU6EqMpjART/Sharewis-Design-System?node-id=4-319",
+    "lastUpdated": "2026-08-07",
+    "usage": "各アイコンはFigma上のsymbolノード。実装時に download_assets(fileKey, nodeId) でSVGを取得する。svgAssetsは1回の呼び出しにつき20件までのキャップがあるため、個別のnodeIdを指定して取得する。"
+  },
+  "fileKey": "3IHJOBCeBTUrU6EqMpjART",
+  "icons": [
+    {
+      "name": "user_32px",
+      "nodeId": "20:277",
+      "size": "32px"
+    },
+    {
+      "name": "check_12px",
+      "nodeId": "88:499",
+      "size": "12px"
+    },
+    {
+      "name": "graduation-cap_12px",
+      "nodeId": "145:7",
+      "size": "12px"
+    },
+    {
+      "name": "grip-dots-vertical_12px",
+      "nodeId": "157:404",
+      "size": "12px"
+    },
+    {
+      "name": "grip-lines_12px",
+      "nodeId": "158:623",
+      "size": "12px"
+    },
+    {
+      "name": "copy_12px",
+      "nodeId": "271:533",
+      "size": "12px"
+    },
+    {
+      "name": "circle-check_24px",
+      "nodeId": "11:487",
+      "size": "24px"
+    },
+    {
+      "name": "circle-exclamation_24px",
+      "nodeId": "11:486",
+      "size": "24px"
+    },
+    {
+      "name": "bell_24px",
+      "nodeId": "13:273",
+      "size": "24px"
+    },
+    {
+      "name": "magnifying-glass_24px",
+      "nodeId": "20:280",
+      "size": "24px"
+    },
+    {
+      "name": "plus_24px",
+      "nodeId": "73:322",
+      "size": "24px"
+    },
+    {
+      "name": "link_24px",
+      "nodeId": "103:52",
+      "size": "24px"
+    },
+    {
+      "name": "graduation-cap_24px",
+      "nodeId": "106:498",
+      "size": "24px"
+    },
+    {
+      "name": "graduation-cap_24px",
+      "nodeId": "153:400",
+      "size": "24px"
+    },
+    {
+      "name": "square-check_24px",
+      "nodeId": "214:707",
+      "size": "24px"
+    },
+    {
+      "name": "circle-caret-right_24px",
+      "nodeId": "214:709",
+      "size": "24px"
+    },
+    {
+      "name": "file-lines_24px",
+      "nodeId": "214:711",
+      "size": "24px"
+    },
+    {
+      "name": "file-pdf_24px",
+      "nodeId": "214:713",
+      "size": "24px"
+    },
+    {
+      "name": "paperclip_24px",
+      "nodeId": "214:715",
+      "size": "24px"
+    },
+    {
+      "name": "music_24px",
+      "nodeId": "214:717",
+      "size": "24px"
+    },
+    {
+      "name": "spell-check_24px",
+      "nodeId": "214:719",
+      "size": "24px"
+    },
+    {
+      "name": "list_24px",
+      "nodeId": "214:721",
+      "size": "24px"
+    },
+    {
+      "name": "list-radio_24px",
+      "nodeId": "214:759",
+      "size": "24px"
+    },
+    {
+      "name": "circle-caret-down_24px",
+      "nodeId": "214:757",
+      "size": "24px"
+    },
+    {
+      "name": "diagram-previous_24px",
+      "nodeId": "214:755",
+      "size": "24px"
+    },
+    {
+      "name": "alock_24px",
+      "nodeId": "214:789",
+      "size": "24px"
+    },
+    {
+      "name": "circle-dot_24px",
+      "nodeId": "214:766",
+      "size": "24px"
+    },
+    {
+      "name": "cloud-arrow-up_24px",
+      "nodeId": "214:768",
+      "size": "24px"
+    },
+    {
+      "name": "align-justify_24px",
+      "nodeId": "214:764",
+      "size": "24px"
+    },
+    {
+      "name": "sentence_24px",
+      "nodeId": "214:762",
+      "size": "24px"
+    },
+    {
+      "name": "file-zip_24px",
+      "nodeId": "214:662",
+      "size": "24px"
+    },
+    {
+      "name": "arrow-left-from-bracket_24px",
+      "nodeId": "241:567",
+      "size": "24px"
+    },
+    {
+      "name": "calendar_24px",
+      "nodeId": "241:576",
+      "size": "24px"
+    },
+    {
+      "name": "arrow-left_16px",
+      "nodeId": "20:253",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-right_16px",
+      "nodeId": "20:251",
+      "size": "16px"
+    },
+    {
+      "name": "magnifying-glass__16px",
+      "nodeId": "20:282",
+      "size": "16px"
+    },
+    {
+      "name": "angles-right_16px",
+      "nodeId": "46:252",
+      "size": "16px"
+    },
+    {
+      "name": "angles-left_16px",
+      "nodeId": "46:251",
+      "size": "16px"
+    },
+    {
+      "name": "pen-to-square_16px",
+      "nodeId": "56:899",
+      "size": "16px"
+    },
+    {
+      "name": "trash-can_16px",
+      "nodeId": "56:900",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-up-right-from-square_16px",
+      "nodeId": "90:436",
+      "size": "16px"
+    },
+    {
+      "name": "link_16px",
+      "nodeId": "103:30",
+      "size": "16px"
+    },
+    {
+      "name": "angle-down_16px",
+      "nodeId": "20:264",
+      "size": "16px"
+    },
+    {
+      "name": "angle-up_16px",
+      "nodeId": "20:267",
+      "size": "16px"
+    },
+    {
+      "name": "angle-left_16px",
+      "nodeId": "46:1777",
+      "size": "16px"
+    },
+    {
+      "name": "angle-right_16px",
+      "nodeId": "20:270",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-down-to-line_16px",
+      "nodeId": "20:255",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-up-to-line_16px",
+      "nodeId": "20:257",
+      "size": "16px"
+    },
+    {
+      "name": "plus_16px",
+      "nodeId": "20:259",
+      "size": "16px"
+    },
+    {
+      "name": "gear-complex_16px",
+      "nodeId": "20:273",
+      "size": "16px"
+    },
+    {
+      "name": "check_16px",
+      "nodeId": "20:275",
+      "size": "16px"
+    },
+    {
+      "name": "graduation-cap_16px",
+      "nodeId": "105:489",
+      "size": "16px"
+    },
+    {
+      "name": "circle-exclamation_16px",
+      "nodeId": "11:476",
+      "size": "16px"
+    },
+    {
+      "name": "circle-check_16px",
+      "nodeId": "11:475",
+      "size": "16px"
+    },
+    {
+      "name": "xmark_16px",
+      "nodeId": "20:250",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-left-from-bracket_16px",
+      "nodeId": "29:305",
+      "size": "16px"
+    },
+    {
+      "name": "clock_16px",
+      "nodeId": "81:337",
+      "size": "16px"
+    },
+    {
+      "name": "calendar_16px",
+      "nodeId": "81:336",
+      "size": "16px"
+    },
+    {
+      "name": "eye_open_16px",
+      "nodeId": "88:495",
+      "size": "16px"
+    },
+    {
+      "name": "eye_close_16px",
+      "nodeId": "88:497",
+      "size": "16px"
+    },
+    {
+      "name": "copy_16px",
+      "nodeId": "120:400",
+      "size": "16px"
+    },
+    {
+      "name": "ai_16px",
+      "nodeId": "126:403",
+      "size": "16px"
+    },
+    {
+      "name": "graduation-cap-fill_16px",
+      "nodeId": "143:1881",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-right-arrow-left_16px",
+      "nodeId": "158:618",
+      "size": "16px"
+    },
+    {
+      "name": "circle-question_16px",
+      "nodeId": "170:502",
+      "size": "16px"
+    },
+    {
+      "name": "folder_16px",
+      "nodeId": "189:454",
+      "size": "16px"
+    },
+    {
+      "name": "option_16px",
+      "nodeId": "190:457",
+      "size": "16px"
+    },
+    {
+      "name": "folder_arrow_left_16px",
+      "nodeId": "191:464",
+      "size": "16px"
+    },
+    {
+      "name": "square-check_16px",
+      "nodeId": "214:723",
+      "size": "16px"
+    },
+    {
+      "name": "circle-caret-right_16px",
+      "nodeId": "214:727",
+      "size": "16px"
+    },
+    {
+      "name": "file-lines_16px",
+      "nodeId": "214:729",
+      "size": "16px"
+    },
+    {
+      "name": "file-pdf_16px",
+      "nodeId": "214:731",
+      "size": "16px"
+    },
+    {
+      "name": "paperclip_16px",
+      "nodeId": "214:735",
+      "size": "16px"
+    },
+    {
+      "name": "music_16px",
+      "nodeId": "214:737",
+      "size": "16px"
+    },
+    {
+      "name": "spell-check_16px",
+      "nodeId": "214:725",
+      "size": "16px"
+    },
+    {
+      "name": "list-ul_16px",
+      "nodeId": "214:733",
+      "size": "16px"
+    },
+    {
+      "name": "image_16px",
+      "nodeId": "214:753",
+      "size": "16px"
+    },
+    {
+      "name": "circle-info_16px",
+      "nodeId": "214:772",
+      "size": "16px"
+    },
+    {
+      "name": "play_16px",
+      "nodeId": "214:739",
+      "size": "16px"
+    },
+    {
+      "name": "pause_16px",
+      "nodeId": "254:6",
+      "size": "16px"
+    },
+    {
+      "name": "volume_16px",
+      "nodeId": "214:743",
+      "size": "16px"
+    },
+    {
+      "name": "list-check_16px",
+      "nodeId": "214:749",
+      "size": "16px"
+    },
+    {
+      "name": "circle-caret-down_16px",
+      "nodeId": "214:745",
+      "size": "16px"
+    },
+    {
+      "name": "diagram-previous_16px",
+      "nodeId": "214:751",
+      "size": "16px"
+    },
+    {
+      "name": "lock_16px",
+      "nodeId": "214:770",
+      "size": "16px"
+    },
+    {
+      "name": "circle-small_stroke_16px",
+      "nodeId": "214:774",
+      "size": "16px"
+    },
+    {
+      "name": "circle-small_fill_16px",
+      "nodeId": "214:776",
+      "size": "16px"
+    },
+    {
+      "name": "file-zip_16px",
+      "nodeId": "214:660",
+      "size": "16px"
+    },
+    {
+      "name": "list-radio_16px",
+      "nodeId": "224:627",
+      "size": "16px"
+    },
+    {
+      "name": "align-justify_16px",
+      "nodeId": "224:623",
+      "size": "16px"
+    },
+    {
+      "name": "sentence_16px",
+      "nodeId": "224:620",
+      "size": "16px"
+    },
+    {
+      "name": "cloud-arrow-up_16px",
+      "nodeId": "224:624",
+      "size": "16px"
+    },
+    {
+      "name": "bars_16px",
+      "nodeId": "228:753",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-right-to-line_16px",
+      "nodeId": "232:797",
+      "size": "16px"
+    },
+    {
+      "name": "filter_16px",
+      "nodeId": "235:526",
+      "size": "16px"
+    },
+    {
+      "name": "volume_16px",
+      "nodeId": "245:2378",
+      "size": "16px"
+    },
+    {
+      "name": "volume-slash_16px",
+      "nodeId": "245:2377",
+      "size": "16px"
+    },
+    {
+      "name": "subtitles_16px",
+      "nodeId": "252:2472",
+      "size": "16px"
+    },
+    {
+      "name": "subtitles-slash_16px",
+      "nodeId": "252:2471",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-up-right-and-arrow-down-left-from-center_16px",
+      "nodeId": "256:554",
+      "size": "16px"
+    },
+    {
+      "name": "arrow-down-left-and-arrow-up-right-to-center_16px",
+      "nodeId": "257:559",
+      "size": "16px"
+    },
+    {
+      "name": "paper-plane_16px",
+      "nodeId": "266:536",
+      "size": "16px"
+    }
+  ]
+}

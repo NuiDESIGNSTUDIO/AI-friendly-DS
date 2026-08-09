@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "source": "Figma metadata scan (canvas '01_UI kit')",
+    "figmaFile": "https://www.figma.com/design/3IHJOBCeBTUrU6EqMpjART/Sharewis-Design-System?node-id=2-120",
+    "lastUpdated": "2026-08-07",
+    "usage": "Storybookが存在しないため、コンポーネント実装の正解ソースとしてFigma node-idを直接参照する。get_design_context(fileKey, nodeId) でコード/スクリーンショットを取得できる。"
+  },
+  "fileKey": "3IHJOBCeBTUrU6EqMpjART",
+  "components": [
+    {
+      "name": "TextButton",
+      "nodeId": "2:508",
+      "section": "Buttom"
+    },
+    {
+      "name": "Textlink",
+      "nodeId": "2:642",
+      "section": "Buttom"
+    },
+    {
+      "name": "Icon_Buttom",
+      "nodeId": "13:211",
+      "section": "Buttom"
+    },
+    {
+      "name": "Button",
+      "nodeId": "21:346",
+      "section": "Buttom"
+    },
+    {
+      "name": "TextButton",
+      "nodeId": "113:399",
+      "section": "Buttom"
+    },
+    {
+      "name": "TextButton",
+      "nodeId": "214:1477",
+      "section": "Buttom"
+    },
+    {
+      "name": "Title Buttom",
+      "nodeId": "214:665",
+      "section": "Buttom"
+    },
+    {
+      "name": "Lecture",
+      "nodeId": "214:567",
+      "section": "Card"
+    },
+    {
+      "name": "Section",
+      "nodeId": "214:636",
+      "section": "Card"
+    },
+    {
+      "name": "Input",
+      "nodeId": "20:348",
+      "section": "Input"
+    },
+    {
+      "name": "Vertical Navigation",
+      "nodeId": "2:379",
+      "section": "Navigation"
+    },
+    {
+      "name": "Sidebar",
+      "nodeId": "113:1197",
+      "section": "Navigation"
+    },
+    {
+      "name": "TableBulkActionArea",
+      "nodeId": "2:598",
+      "section": "Table"
+    },
+    {
+      "name": "Header-cell",
+      "nodeId": "2:659",
+      "section": "Table"
+    },
+    {
+      "name": "Cell",
+      "nodeId": "2:557",
+      "section": "Table"
+    },
+    {
+      "name": "Sort",
+      "nodeId": "2:681",
+      "section": "Table"
+    },
+    {
+      "name": "Label",
+      "nodeId": "2:835",
+      "section": "Label&Badge"
+    },
+    {
+      "name": "Label_status",
+      "nodeId": "140:399",
+      "section": "Label&Badge"
+    },
+    {
+      "name": "Radio Buttom",
+      "nodeId": "2:825",
+      "section": "Radio Buttom"
+    },
+    {
+      "name": "Radio box buttom",
+      "nodeId": "239:2250",
+      "section": "Radio Buttom"
+    },
+    {
+      "name": "Toggle",
+      "nodeId": "20:322",
+      "section": "Toggle"
+    },
+    {
+      "name": "Dropdown",
+      "nodeId": "2:495",
+      "section": "Dropdown"
+    },
+    {
+      "name": "Select Menu",
+      "nodeId": "2:751",
+      "section": "Dropdown"
+    },
+    {
+      "name": "Cheack Menu",
+      "nodeId": "2:761",
+      "section": "Dropdown"
+    },
+    {
+      "name": "Default Menu",
+      "nodeId": "2:771",
+      "section": "Dropdown"
+    },
+    {
+      "name": "Select Menu/Menu",
+      "nodeId": "2:742",
+      "section": "Dropdown"
+    },
+    {
+      "name": "cheack Menu/Menu",
+      "nodeId": "2:747",
+      "section": "Dropdown"
+    },
+    {
+      "name": "Pudown_Tag",
+      "nodeId": "20:331",
+      "section": "Dropdown"
+    },
+    {
+      "name": "Notification",
+      "nodeId": "2:780",
+      "section": "Notification"
+    },
+    {
+      "name": "Tab",
+      "nodeId": "88:350",
+      "section": "Tab"
+    },
+    {
+      "name": "Segment Control Buttom",
+      "nodeId": "88:375",
+      "section": "Segment Control"
+    },
+    {
+      "name": "Segment Control",
+      "nodeId": "88:441",
+      "section": "Segment Control"
+    },
+    {
+      "name": "Choice Group Button",
+      "nodeId": "237:542",
+      "section": "Segment Control"
+    },
+    {
+      "name": "Checkbox",
+      "nodeId": "2:676",
+      "section": "Checkbox"
+    },
+    {
+      "name": "Cheack box buttom",
+      "nodeId": "108:426",
+      "section": "Checkbox"
+    },
+    {
+      "name": "Check Select Buttom",
+      "nodeId": "88:400",
+      "section": "Checkbox"
+    },
+    {
+      "name": "Select Buttom",
+      "nodeId": "113:416",
+      "section": "Checkbox"
+    },
+    {
+      "name": "page_no",
+      "nodeId": "20:311",
+      "section": "Page Nation"
+    },
+    {
+      "name": "Page Nation",
+      "nodeId": "46:1987",
+      "section": "Page Nation"
+    },
+    {
+      "name": "folder list",
+      "nodeId": "217:687",
+      "section": "List"
+    },
+    {
+      "name": "_Lecture",
+      "nodeId": "271:575",
+      "section": "Archive"
+    }
+  ]
+}
