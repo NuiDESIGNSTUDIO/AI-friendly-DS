@@ -1,7 +1,7 @@
 {
   "meta": {
     "description": "AIが生成しがちな過剰装飾・ハードコードを防ぐ禁止パターン集。/ban-pattern で追記していく。",
-    "lastUpdated": "2026-08-07"
+    "lastUpdated": "2026-08-10"
   },
   "rules": [
     {
@@ -9,6 +9,7 @@
       "pattern": "shadow-lg|shadow-xl|shadow-2xl",
       "type": "tailwind-class",
       "reason": "AIは過剰に強いシャドウを多用しがち。shadow-sm/shadow を優先する。",
+      "alternative": "shadow-sm または shadow を使う",
       "severity": "error"
     },
     {
@@ -16,6 +17,7 @@
       "pattern": "text-black|text-white",
       "type": "tailwind-class",
       "reason": "tokens.json のneutralカラーを使用し、直書きの黒白を避ける。",
+      "alternative": "tokens.json の color.neutral / color.slate 系クラスを使う",
       "severity": "error"
     },
     {
@@ -23,6 +25,7 @@
       "pattern": "(bg|text|border)-\\[#[0-9a-fA-F]{3,6}\\]",
       "type": "tailwind-arbitrary",
       "reason": "任意色の直書きはSSOT(tokens.json)を破壊する。トークン経由の色クラスを使う。",
+      "alternative": "tokens.json に定義済みのカラークラス(例: bg-sky-600, text-slate-600)を使う",
       "severity": "error"
     },
     {
@@ -30,6 +33,7 @@
       "pattern": "bg-gradient-to-",
       "type": "tailwind-class",
       "reason": "AIが理由なく多用しがちな装飾的グラデーションを禁止。",
+      "alternative": "単色の背景(例: bg-white, bg-slate-50, ブランドカラー)を使う",
       "severity": "warning"
     },
     {
@@ -37,6 +41,7 @@
       "pattern": "border-t-4|border-t-8|border-l-4|border-l-8",
       "type": "tailwind-class",
       "reason": "AIっぽい太いカラーバー装飾を禁止。",
+      "alternative": "border(1px)のみで構成する。強調は色や太字テキストで行う",
       "severity": "warning"
     },
     {
@@ -44,14 +49,32 @@
       "pattern": "rounded-2xl|rounded-3xl|rounded-full",
       "type": "tailwind-class",
       "reason": "過剰な角丸はブランドトーンから逸脱しやすい。tokens.jsonのradiusスケールを優先する。",
+      "alternative": "tokens.json の radius.sm 〜 radius.xl を用途に応じて使う(円形が必要なアバター等を除く)",
       "severity": "warning"
     },
     {
       "id": "no-inline-style-hardcode",
-      "pattern": "style=\\{\\{",
-      "type": "jsx-pattern",
-      "reason": "インラインstyleでの直書きはトークン管理を回避してしまうため禁止。",
+      "pattern": "style=\\{\\{|style=\"[^\"]",
+      "type": "html-jsx-pattern",
+      "reason": "インラインstyle(HTML属性/JSX問わず)での直書きはトークン管理を回避してしまうため禁止。",
+      "alternative": "Tailwindユーティリティクラス(tokens.json準拠)で表現する",
       "severity": "error"
+    },
+    {
+      "id": "no-decorative-purple",
+      "pattern": "(bg|text|border)-(purple|violet|fuchsia)-",
+      "type": "tailwind-class",
+      "reason": "purple/violet/fuchsia系の装飾カラーはAI生成UIの典型パターン。ブランドカラーを使わせる。",
+      "alternative": "tokens.json の color.brand / color.sky 系(ブランドカラー)を使う",
+      "severity": "warning"
+    },
+    {
+      "id": "no-style-block",
+      "pattern": "<style[ >]",
+      "type": "html-pattern",
+      "reason": "生CSSの<style>ブロックはTailwind/トークン体系を迂回するエスケープハッチ。",
+      "alternative": "Tailwindユーティリティクラス(tokens.json準拠)で表現する",
+      "severity": "warning"
     }
   ]
 }

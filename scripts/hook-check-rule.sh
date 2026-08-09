@@ -31,25 +31,43 @@ if [ ! -f "$RULES_FILE" ]; then
   exit 0
 fi
 
-VIOLATIONS=""
+ERRORS=""
+WARNINGS=""
 TMP_MATCH="$(mktemp)"
 trap 'rm -f "$TMP_MATCH"' EXIT
 
-while IFS=$'\t' read -r id pattern reason severity; do
+while IFS=$'\t' read -r id pattern reason alternative severity; do
   [ -z "$pattern" ] && continue
   if grep -nE "$pattern" "$FILE_PATH" >"$TMP_MATCH" 2>/dev/null; then
-    VIOLATIONS="${VIOLATIONS}
+    ENTRY="
 [${severity}] ${id}: ${reason}
   file: ${FILE_PATH}
+  代替: ${alternative}
 $(cat "$TMP_MATCH")
 "
+    if [ "$severity" = "error" ]; then
+      ERRORS="${ERRORS}${ENTRY}"
+    else
+      WARNINGS="${WARNINGS}${ENTRY}"
+    fi
   fi
-done < <(jq -r '.rules[] | [.id, .pattern, .reason, .severity] | @tsv' "$RULES_FILE")
+done < <(jq -r '.rules[] | [.id, .pattern, .reason, .alternative, .severity] | @tsv' "$RULES_FILE")
 
-if [ -n "$VIOLATIONS" ]; then
-  echo "rules.json 違反が検出されました。修正してください:" >&2
-  echo "$VIOLATIONS" >&2
+# severity=error は自動修正を促すためブロックする。severity=warning は報告のみで処理を止めない。
+if [ -n "$ERRORS" ]; then
+  echo "rules.json 違反(error)が検出されました。修正してください:" >&2
+  echo "$ERRORS" >&2
+  if [ -n "$WARNINGS" ]; then
+    echo "" >&2
+    echo "参考(warning、任意で見直してください):" >&2
+    echo "$WARNINGS" >&2
+  fi
   exit 2
+fi
+
+if [ -n "$WARNINGS" ]; then
+  echo "rules.json 違反(warning)が検出されました。ブロックはしませんが、可能であれば見直してください:" >&2
+  echo "$WARNINGS" >&2
 fi
 
 exit 0
