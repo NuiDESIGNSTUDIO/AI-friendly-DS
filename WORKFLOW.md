@@ -7,6 +7,7 @@ UI/デザインタスクに着手する際は、必ず以下の Step0〜Step4 �
 - STG環境 / Figma で現行画面の構成・レイアウト・配置を(見た目として)確認する。
 - `reference/sharewis-act/`(本番サイトのローカル参照クローン)のコードを実際に読み、現行画面の実装・構成・使用コンポーネントを把握する。見た目はSTG/Figma、実装の裏付けは `reference/sharewis-act/` で確認する。
 - `components.json`(Figmaコンポーネント一覧)と `icons.json`(アイコン一覧)を検索し、使用できる部品・アイコンとそのFigma node-idを洗い出す。該当コンポーネントが見つかったら、Figma MCPの `get_design_context`(コンポーネント)/`download_assets`(アイコンSVG)でnode-idを指定し、実際のデザイン・コードを取得する。
+- `screens.json`(人間デザイナー作成の参考画面カタログ)を検索し、対象画面と役割が近いものがあれば、レイアウト・情報設計・項目構成の参考にする(`assets/reference-screens/`のスクリーンショット、または`get_design_context`でnode-idを直接参照)。各screens.jsonエントリは人間が指定した代表フレームであり、そのまま丸ごと複製する対象ではなく「参考にする画面パターン」として扱う。
 - `tokens.json`（色・余白）と `rules.json`（禁止パターン）を読み込む。
 - 要件・対象範囲に不明点がある場合は、憶測で進めず1問ずつ質問して解消してからStep1に進む(まとめて全部聞くより、1問ずつの方が回答しやすい)。
 

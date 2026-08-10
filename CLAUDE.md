@@ -8,6 +8,7 @@
 3. **[rules.json](./rules.json)** — 禁止パターン集。実装前後で必ず照合する。
 4. **[components.json](./components.json)** — Figma「01_UI kit」のコンポーネント一覧(node-id付き)。Storybookが無いため、これが正解コードの参照元。
 5. **[icons.json](./icons.json)** — Figma「02_Icon」のアイコン一覧(node-id付き)。使用時はnode-idでSVGを取得する。
+6. **[screens.json](./screens.json)** — 人間デザイナー作成の参考画面カタログ(node-id付き)。近い役割の画面があれば構成・レイアウトの参考にする。
 
 ## 絶対遵守ルール
 - WORKFLOW.md の Step1（3案提案）を飛ばして、いきなりコードを書かない。
@@ -19,6 +20,7 @@
 ## 主要ファイル
 - コンポーネントカタログ: `components.json`(Figma「01_UI kit」の全コンポーネントとnode-id)
 - アイコンカタログ: `icons.json`(Figma「02_Icon」の全アイコンとnode-id、`assets/icons/12px/`に実SVGサンプルあり)
+- 参考画面カタログ: `screens.json`(人間デザイナー作成の参考画面。`assets/reference-screens/`に代表フレームのスクリーンショットあり)
 - ASIS参照リポジトリ: `reference/sharewis-act/`（本番サイトのコードをローカルクローン、Git管理外。現行画面・コンポーネントの実装確認に使う）
 - 検品スクリプト: `scripts/hook-check-rule.sh`
 - 改善ログ: `feedback-log.md`

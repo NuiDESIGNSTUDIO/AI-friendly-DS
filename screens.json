@@ -1,0 +1,1145 @@
+{
+  "meta": {
+    "source": "Figma Wisdom-Base-MenberShip_ReDesign(人間デザイナー作成の管理者側リファレンス画面)",
+    "figmaFile": "https://www.figma.com/design/ucxu2dxImAVeaPxAywud8E/Wisdom-Base-MenberShip_ReDesign",
+    "lastUpdated": "2026-08-10",
+    "usage": "AIがUIを新規作成・改修する際、近い役割の画面がここにあれば参照する。各セクションには検討バリエーションが多数存在するため、nodeIdは人間が代表として指定したものに限定している(sectionNodeIdは検討過程を遡りたい場合の参照用)。screenshotがnullのエントリはローカル画像を保存しておらず、使用時にFigma MCP(get_design_context/get_screenshot)でnodeIdを指定して取得する。"
+  },
+  "fileKey": "ucxu2dxImAVeaPxAywud8E",
+  "screens": [
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー一覧",
+      "nodeId": "18:25355",
+      "sectionNodeId": "7:19705",
+      "sectionName": "TOBE_ユーザー一覧画面",
+      "screenshot": "assets/reference-screens/user-management/user-list.png",
+      "note": "検索・フィルタ・一括操作のある一覧画面。セクション内に検討バリエーション多数(約30フレーム)。人間が代表として指定。"
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー詳細_課金記録タブ",
+      "nodeId": "52:37834",
+      "sectionNodeId": "124:39206",
+      "sectionName": "TOBE_ユーザー詳細",
+      "screenshot": "assets/reference-screens/user-management/user-detail-billing.png",
+      "note": "ユーザー詳細は課金記録/コース配布通知/ダウンロード/無料・プロ・対面・完了コースの計7タブ構成。現時点で5タブ分を登録。"
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー詳細_無料コースタブ",
+      "nodeId": "142:30369",
+      "sectionNodeId": "124:39206",
+      "sectionName": "TOBE_ユーザー詳細",
+      "screenshot": "assets/reference-screens/user-management/user-detail-free-course.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー詳細_プロコースタブ",
+      "nodeId": "151:24653",
+      "sectionNodeId": "124:39206",
+      "sectionName": "TOBE_ユーザー詳細",
+      "screenshot": "assets/reference-screens/user-management/user-detail-pro-course.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー詳細_対面コースタブ",
+      "nodeId": "151:25164",
+      "sectionNodeId": "124:39206",
+      "sectionName": "TOBE_ユーザー詳細",
+      "screenshot": "assets/reference-screens/user-management/user-detail-offline-course.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー詳細_完了コースタブ",
+      "nodeId": "151:25433",
+      "sectionNodeId": "124:39206",
+      "sectionName": "TOBE_ユーザー詳細",
+      "screenshot": "assets/reference-screens/user-management/user-detail-completed-course.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー新規作成",
+      "nodeId": "124:42284",
+      "sectionNodeId": "124:42281",
+      "sectionName": "TOBE_ユーザー新規作成",
+      "screenshot": "assets/reference-screens/user-management/user-create.png",
+      "note": "メールアドレスなし版。メールアドレスあり/入力済み状態のバリエーションもセクション内にあり。"
+    },
+    {
+      "group": "管理者-ユーザー管理",
+      "name": "ユーザー編集_講師",
+      "nodeId": "207:31381",
+      "sectionNodeId": "124:42280",
+      "sectionName": "TOBE_ユーザー編集",
+      "screenshot": "assets/reference-screens/user-management/user-edit-instructor.png",
+      "note": "講師アカウント用の編集画面。一般ユーザー用(175:36542)、パスワード変更モーダル(142:29930)もセクション内にあり。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース一覧",
+      "nodeId": "272:13343",
+      "sectionNodeId": "332:16878",
+      "sectionName": "TOBE_コース一覧",
+      "screenshot": "assets/reference-screens/course-management/course-list.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー一覧",
+      "nodeId": "272:15150",
+      "sectionNodeId": "332:16878",
+      "sectionName": "TOBE_コース一覧",
+      "screenshot": "assets/reference-screens/course-management/lecture-list.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "受講者一覧",
+      "nodeId": "272:17540",
+      "sectionNodeId": "332:16878",
+      "sectionName": "TOBE_コース一覧",
+      "screenshot": "assets/reference-screens/course-management/enrolled-student-list.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース新規作成モーダル",
+      "nodeId": "310:64056",
+      "sectionNodeId": "310:52751",
+      "sectionName": "TOBE_コース一覧_新規コース作成",
+      "screenshot": "assets/reference-screens/course-management/course-create-modal.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース価格設定案内",
+      "nodeId": "314:15790",
+      "sectionNodeId": "310:52751",
+      "sectionName": "TOBE_コース一覧_新規コース作成",
+      "screenshot": "assets/reference-screens/course-management/course-price-guide.png",
+      "note": "コース編集_価格設定_無料（購入ページあり）バリエーション。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_一覧からの簡易編集",
+      "nodeId": "336:58231",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-quick.png",
+      "note": "コース一覧画面から開く簡易編集パネル。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_基本設定タブ",
+      "nodeId": "287:41064",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-basic.png",
+      "note": "コース編集画面のメインタブ(タイトル/URL/紹介文/受講設定/講師設定/カテゴリ設定/カスタマイズ設定等)。タブ構成: 基本設定/価格設定/カスタムフォーム設定/通知設定/カスタム項目設定/レクチャーの追加、の6タブ。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_価格設定(購入ページなし)",
+      "nodeId": "307:47311",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-price-no-page.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_価格設定(購入ページあり)",
+      "nodeId": "310:48463",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-price-with-page.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_カスタムフォーム設定",
+      "nodeId": "310:50915",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-custom-form.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_通知設定",
+      "nodeId": "310:51392",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-notification.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_カスタム項目設定",
+      "nodeId": "310:51860",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-custom-field.png",
+      "note": ""
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "コース編集_レクチャーの追加タブ",
+      "nodeId": "542:56473",
+      "sectionNodeId": "268:2135",
+      "sectionName": "(metadata取得エラーのため正式なセクション名未確認)",
+      "screenshot": "assets/reference-screens/course-management/course-edit-add-lecture.png",
+      "note": "レクチャー種別の選択・追加。個々のレクチャー編集詳細は394:46850配下(下記、全件カタログ化)を参照。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_タイトル",
+      "nodeId": "424:17178",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_バージョン履歴_ドロワー_通常",
+      "nodeId": "791:72219",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_バージョン履歴_ドロワー_最大",
+      "nodeId": "791:72732",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_バージョン履歴_ドロワー_最小",
+      "nodeId": "791:72868",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_タイトル",
+      "nodeId": "473:53051",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_タイトル",
+      "nodeId": "476:18405",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_タイトル",
+      "nodeId": "476:19216",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_タイトル",
+      "nodeId": "590:29339",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_タイトル",
+      "nodeId": "616:36918",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_テキスト_タイトル",
+      "nodeId": "448:52173",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_タイトル",
+      "nodeId": "448:52909",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_ファイルアップロード",
+      "nodeId": "431:53033",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_ファイルアップロード",
+      "nodeId": "473:53098",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_ファイルアップロード",
+      "nodeId": "476:18441",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_ファイルアップロード",
+      "nodeId": "476:19246",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_ファイルアップロード済み",
+      "nodeId": "473:54512",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_ファイルアップロード済み",
+      "nodeId": "476:18486",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_ファイルアップロード済み",
+      "nodeId": "476:19286",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_ファイルアップロード済み",
+      "nodeId": "476:19049",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_ファイルアップロード済み",
+      "nodeId": "476:19120",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_詳細",
+      "nodeId": "437:52712",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_詳細_未選択",
+      "nodeId": "573:26771",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_受講条件設定",
+      "nodeId": "476:18096",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_テキスト_受講条件_初期",
+      "nodeId": "573:27268",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_受講条件設定_初期",
+      "nodeId": "573:27897",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_受講条件設定_初期",
+      "nodeId": "573:28683",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_受講条件設定_初期",
+      "nodeId": "573:29206",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_受講条件設定_初期",
+      "nodeId": "573:29852",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_受講条件設定_選択済",
+      "nodeId": "559:58105",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_テキスト_受講条件設定_選択済",
+      "nodeId": "573:27330",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_受講条件設定_選択済_2",
+      "nodeId": "573:27958",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_受講条件設定_選択済",
+      "nodeId": "573:28745",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_受講条件設定_選択済",
+      "nodeId": "573:29268",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_受講条件設定_ON_レクチャーあり_1",
+      "nodeId": "616:38270",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_受講条件設定_ON_レクチャーあり_2",
+      "nodeId": "616:38428",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_受講条件設定_選択済",
+      "nodeId": "573:29914",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_受講条件設定_詳細設定",
+      "nodeId": "559:57777",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_テキスト_受講条件設定_詳細設定",
+      "nodeId": "573:27400",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_受講条件設定_詳細設定_2",
+      "nodeId": "573:28027",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_受講条件設定_詳細設定",
+      "nodeId": "573:28815",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_受講条件設定_詳細設定",
+      "nodeId": "573:29338",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_受講条件設定_OFF_1",
+      "nodeId": "616:38246",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_受講条件設定_OFF_2",
+      "nodeId": "616:38462",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_受講条件設定_詳細設定",
+      "nodeId": "573:29984",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_PDF_詳細",
+      "nodeId": "473:53175",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_添付ファイル_詳細",
+      "nodeId": "476:18527",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_音声_詳細",
+      "nodeId": "476:19399",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_テキスト_詳細",
+      "nodeId": "448:52219",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_問題",
+      "nodeId": "448:52948",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_格納状態",
+      "nodeId": "650:31669",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_初期表示",
+      "nodeId": "649:30645",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_初期表示_1",
+      "nodeId": "608:30521",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_問題追加_1",
+      "nodeId": "650:34174",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_問題追加_2",
+      "nodeId": "651:34814",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_問題追加_3",
+      "nodeId": "653:35200",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_テキスト追加",
+      "nodeId": "650:34358",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_解答",
+      "nodeId": "473:17106",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_理解度チェック_詳細",
+      "nodeId": "451:16847",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_ファイルアップロード",
+      "nodeId": "436:14338",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_動画_ファイルアップロード",
+      "nodeId": "446:16642",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/動画_受講条件",
+      "nodeId": "557:57537",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/テキスト_受講条件_1",
+      "nodeId": "573:27460",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/理解度チェック_受講条件",
+      "nodeId": "573:28086",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/PDF_受講条件",
+      "nodeId": "573:28875",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/添付ファイル_受講条件",
+      "nodeId": "573:29398",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/音声_受講条件",
+      "nodeId": "573:30044",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/動画_受講条件_2",
+      "nodeId": "559:57761",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/テキスト_受講条件_2",
+      "nodeId": "573:27463",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/理解度チェック_受講条件_2",
+      "nodeId": "573:28089",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/PDF_受講条件_2",
+      "nodeId": "573:28878",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/添付ファイル_受講条件_2",
+      "nodeId": "573:29401",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_SelectMenu/音声_受講条件_2",
+      "nodeId": "573:30047",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_問題作成_展開",
+      "nodeId": "584:27450",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_問題作成_格納",
+      "nodeId": "650:33342",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_試験設定_展開",
+      "nodeId": "584:27605",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_試験設定_未選択",
+      "nodeId": "594:29771",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_試験設定_ランダム出題",
+      "nodeId": "594:29739",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_試験設定_大問選択",
+      "nodeId": "594:29672",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_セクション時間設定_1",
+      "nodeId": "590:29994",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_セクション時間設定_2",
+      "nodeId": "593:29402",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_禁止行動設定_展開",
+      "nodeId": "584:27750",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_アクセス制限設定_展開",
+      "nodeId": "584:27895",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_結果通知設定_展開",
+      "nodeId": "584:27959",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_結果通知_ページ分割チェック",
+      "nodeId": "596:29610",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_受験前ページ設定_展開",
+      "nodeId": "584:28104",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_受験前ページ設定_展開_2",
+      "nodeId": "671:35419",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_セクション追加_1",
+      "nodeId": "588:30301",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_セクション追加_2",
+      "nodeId": "596:64950",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_セクション追加_3",
+      "nodeId": "596:64803",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_セクション追加_4",
+      "nodeId": "596:64972",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/公開確認",
+      "nodeId": "703:31135",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_セクション追加_5",
+      "nodeId": "597:64832",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_セクション追加_6",
+      "nodeId": "597:29681",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_ランダム出題セクション_1",
+      "nodeId": "588:30388",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_ランダム出題セクション_2",
+      "nodeId": "597:65116",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_試験_回答パターン",
+      "nodeId": "593:31951",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/試験_問題一括登録",
+      "nodeId": "596:64559",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_フォーム_フォーム設定_展開",
+      "nodeId": "603:30913",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_フォーム_通知設定_展開",
+      "nodeId": "603:31014",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_フォーム_ページ表示設定_展開",
+      "nodeId": "603:31127",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_フォーム_コメント設定_展開",
+      "nodeId": "603:31272",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_フォーム_質問編集_問題作成",
+      "nodeId": "604:31955",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_レクチャー_試験_初期表示_2",
+      "nodeId": "616:37249",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/削除確認",
+      "nodeId": "703:30984",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    },
+    {
+      "group": "管理者-コース管理",
+      "name": "レクチャー編集_Modal/バージョン管理確認",
+      "nodeId": "777:67143",
+      "sectionNodeId": "394:46850",
+      "sectionName": "TOBE_コース一覧_コース編集_レクチャー",
+      "screenshot": null,
+      "note": "全画面参照の指定によりセクション全体をカタログ化。スクリーンショットは未取得、使用時にget_design_context/get_screenshotでnode-idを指定して取得する。"
+    }
+  ]
+}
