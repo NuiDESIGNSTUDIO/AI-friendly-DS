@@ -1,6 +1,7 @@
 ---
 name: ban-pattern
 description: 人間からの「ここがダサい/NG」というデザイン指摘を rules.json に禁止パターンとして即時追記し、feedback-log.md に経緯を記録する。人間からデザイン修正のダメ出しを受けた直後に実行する。
+user-invocable: false
 ---
 
 # ban-pattern

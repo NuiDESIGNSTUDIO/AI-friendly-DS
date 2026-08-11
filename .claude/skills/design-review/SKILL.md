@@ -1,6 +1,7 @@
 ---
 name: design-review
 description: 生成されたUIコードのレイアウトバランス・余白・トーン&マナー・アクセシビリティをADSロジックに基づいてセルフレビューする。UI実装が完了した直後、人間に提示する前に実行する。
+user-invocable: false
 ---
 
 # design-review
