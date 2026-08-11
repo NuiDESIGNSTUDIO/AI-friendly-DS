@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ユーザー一覧 | Sharewis管理画面</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            DEFAULT: '#00ABC9',
+            light: '#33BCD4',
+            lighter: '#E5F7FA'
+          }
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+<div class="flex min-h-screen">
+
+  <!-- ============ Sidebar ============ -->
+  <aside class="w-[212px] shrink-0 bg-white border-r border-slate-200 flex flex-col pt-5 pb-4">
+    <div class="px-4 pb-5">
+      <img src="assets/img/sharewis-logo.png" alt="ShareWis" class="h-10 w-auto">
+    </div>
+    <nav class="px-2 flex flex-col gap-1">
+      <a href="#" class="px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">TOP</a>
+
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">売上</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">セール</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">クーポン</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+
+      <!-- ユーザー: 展開中セクション -->
+      <div>
+        <div class="flex items-center gap-2 px-3 py-2 rounded-t-md bg-slate-50 text-sm text-gray-600">
+          <span class="flex-1">ユーザー</span>
+          <img src="assets/icons/angle-down.svg" class="w-4 h-4 rotate-180" alt="">
+        </div>
+        <div class="bg-slate-50 rounded-b-md pl-4 pr-2 pb-2 flex flex-col">
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-sky-600 font-medium">ユーザー一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">グループ一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">権限一覧</a>
+        </div>
+      </div>
+
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">コース</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">コース配布</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">レポート</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">レビュー</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">コメント</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">サイト</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">
+        <span class="flex-1">セキュリティ</span>
+        <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+      </a>
+
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50 mt-2">
+        <span>ヘルプセンター</span>
+        <img src="assets/icons/arrow-up-right-from-square.svg" class="w-4 h-4" alt="">
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ============ Main ============ -->
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <!-- Header -->
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-end gap-4 px-4 shrink-0">
+      <button type="button" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
+        <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
+        <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
+      </button>
+      <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+    </header>
+
+    <!-- Content -->
+    <main class="p-6">
+
+      <!-- タイトル + アクションボタン -->
+      <div class="flex items-center gap-8 mb-6">
+        <h1 class="flex-1 text-2xl font-semibold text-gray-900">ユーザー一覧</h1>
+        <div class="flex items-center gap-3">
+          <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50">
+            <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
+            一覧をダウンロード
+          </button>
+          <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter">
+            <img src="assets/icons/arrow-up-to-line.svg" class="w-4 h-4" alt="">
+            一括登録
+          </button>
+          <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-brand text-sm text-slate-50 hover:bg-sky-700">
+            <img src="assets/icons/plus.svg" class="w-4 h-4" alt="">
+            新規追加
+          </button>
+        </div>
+      </div>
+
+      <!-- テーブルカード -->
+      <div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+
+        <!-- 検索・フィルタ・オプション -->
+        <div class="flex items-center gap-4 px-4 py-3 border-b border-slate-200">
+          <div class="flex items-center gap-4 flex-1 min-w-0">
+            <label class="flex items-center gap-1 px-2 py-2 rounded-md border border-gray-300 bg-white w-[223px]">
+              <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+              <input type="text" placeholder="ユーザーを検索する" class="flex-1 min-w-0 text-sm text-gray-900 placeholder-gray-300 outline-none">
+            </label>
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50">
+                グループ
+                <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+              </button>
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50">
+                全ての権限
+                <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs text-gray-700">削除済みのユーザーを含める</span>
+            <button type="button" role="switch" aria-checked="true" class="w-[42px] h-6 rounded-full bg-brand border border-gray-300 flex items-center justify-end p-1">
+              <span class="w-4 h-4 rounded-full bg-white"></span>
+            </button>
+            <button type="button" title="表示項目設定" class="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
+              <img src="assets/icons/gear-complex.svg" class="w-4 h-4" alt="表示項目設定">
+            </button>
+          </div>
+        </div>
+
+        <!-- テーブル本体(横スクロール、チェックボックス列/操作列は固定) -->
+        <div class="overflow-x-auto">
+          <table class="border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-100">
+                <th class="sticky left-0 z-10 bg-slate-100 w-16 h-12 p-4 align-middle">
+                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+                </th>
+                <th class="w-[83px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                <th class="w-[136px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
+                  <span class="inline-flex items-center gap-1">
+                    アカウント名
+                    <span class="inline-flex flex-col items-center justify-center gap-0.5">
+                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-down.svg" class="w-[9px] h-[5px]" alt="">
+                    </span>
+                  </span>
+                </th>
+                <th class="w-32 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">氏名</th>
+                <th class="w-[215px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">メールアドレス</th>
+                <th class="w-[248px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
+                  <span class="inline-flex items-center gap-1">
+                    グループ
+                    <span class="inline-flex flex-col items-center justify-center gap-0.5">
+                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-down.svg" class="w-[9px] h-[5px]" alt="">
+                    </span>
+                  </span>
+                </th>
+                <th class="w-[74px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">権限</th>
+                <th class="w-20 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">招待権限</th>
+                <th class="w-[116px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">パスワード要求</th>
+                <th class="w-[104px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講コース数</th>
+                <th class="w-32 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">完了レクチャー数</th>
+                <th class="w-[140px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">会社名</th>
+                <th class="w-20 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">法人番号</th>
+                <th class="w-14 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">言語</th>
+                <th class="w-14 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">通貨</th>
+                <th class="w-[102px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">請求方法</th>
+                <th class="w-28 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
+                  <span class="inline-flex items-center gap-1">
+                    登録日時
+                    <span class="inline-flex flex-col items-center justify-center gap-0.5">
+                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-down-alt.svg" class="w-[9px] h-[5px]" alt="">
+                    </span>
+                  </span>
+                </th>
+                <th class="w-32 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
+                  <span class="inline-flex items-center gap-1">
+                    最終利用日時
+                    <span class="inline-flex flex-col items-center justify-center gap-0.5">
+                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-down-alt.svg" class="w-[9px] h-[5px]" alt="">
+                    </span>
+                  </span>
+                </th>
+                <th class="sticky right-0 z-10 bg-slate-100 w-[68px] h-12 px-4"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+
+              <!-- Row 1 -->
+              <tr class="hover:bg-slate-50">
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle">
+                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+                </td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100234</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tanaka_taro</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">田中 太郎</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">tanaka.taro@example.com</td>
+                <td class="px-4 py-4">
+                  <div class="flex flex-wrap gap-1 max-w-[216px]">
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Dev</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span>
+                  </div>
+                </td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">管理者</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">有</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">○</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">12</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">48</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">株式会社Wisdom</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567890123</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ja</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">jpy</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/01/15</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/10</td>
+                <td class="sticky right-0 z-10 bg-white px-2 py-4">
+                  <div class="flex items-center justify-center gap-1">
+                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                      <img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集">
+                    </button>
+                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                      <img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除">
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 2: グループ多数(その他n件パターン) -->
+              <tr class="hover:bg-slate-50">
+                <td class="sticky left-0 z-10 bg-white px-6 py-4 align-middle">
+                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+                </td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">100235</td>
+                <td class="px-4 py-4 whitespace-nowrap align-top"><a href="#" class="text-sky-600 hover:underline">sato_hanako</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">佐藤 花子</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">sato.hanako@example.com</td>
+                <td class="px-4 py-4 align-top">
+                  <div class="flex flex-wrap gap-1 max-w-[216px]">
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">システムインテグレーション開発部</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">マーケティング戦略室・デジタル班</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Global Product Design Div.</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">経営企画総務部広報IRグループ</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">海外拠点オンラインサポートチーム</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">次世代モビリティサービス開発プ...</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">営業第一課</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">技術サポート</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">総務人事グループ</span>
+                  </div>
+                  <a href="#" class="inline-block mt-1 text-xs text-brand hover:underline">その他 2件</a>
+                </td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">一般</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">有</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">○</td>
+                <td class="px-4 py-4 whitespace-nowrap align-top"><a href="#" class="text-sky-600 hover:underline">3</a></td>
+                <td class="px-4 py-4 whitespace-nowrap align-top"><a href="#" class="text-sky-600 hover:underline">15</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">株式会社Wisdom</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">1234567890123</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">ja</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">jpy</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">銀行振込</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">2023/11/02</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">2026/08/09</td>
+                <td class="sticky right-0 z-10 bg-white px-2 py-4 align-top">
+                  <div class="flex items-center justify-center gap-1">
+                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                      <img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集">
+                    </button>
+                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                      <img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除">
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 3-8: 通常行(繰り返し) -->
+              <!-- 3 -->
+              <tr class="hover:bg-slate-50">
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100236</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">suzuki_jiro</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">鈴木 次郎</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">suzuki.jiro@example.com</td>
+                <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Dev</span></div></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">一般</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">無</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">○</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">8</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">22</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">株式会社Wisdom</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567890123</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">en</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">usd</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/03/20</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/11</td>
+                <td class="sticky right-0 z-10 bg-white px-2 py-4">
+                  <div class="flex items-center justify-center gap-1">
+                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
+                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                  </div>
+                </td>
+              </tr>
+              <!-- 4 -->
+              <tr class="hover:bg-slate-50">
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100237</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">yamada_misaki</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">山田 美咲</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">yamada.misaki@example.com</td>
+                <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">マーケティング</span></div></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">一般</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">有</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap"></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">5</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">31</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">株式会社Wisdom</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567890123</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ja</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">jpy</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/05/09</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/07</td>
+                <td class="sticky right-0 z-10 bg-white px-2 py-4">
+                  <div class="flex items-center justify-center gap-1">
+                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
+                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                  </div>
+                </td>
+              </tr>
+              <!-- 5 -->
+              <tr class="hover:bg-slate-50">
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100238</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">kobayashi_ken</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">小林 健</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">kobayashi.ken@example.com</td>
+                <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">技術サポート</span></div></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">一般</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">無</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">○</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">20</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">64</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">株式会社Wisdom</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567890123</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ja</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">jpy</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">銀行振込</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2022/09/30</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/06</td>
+                <td class="sticky right-0 z-10 bg-white px-2 py-4">
+                  <div class="flex items-center justify-center gap-1">
+                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
+                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                  </div>
+                </td>
+              </tr>
+              <!-- 6 -->
+              <tr class="hover:bg-slate-50">
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100239</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">ito_ayumi</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">伊藤 あゆみ</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ito.ayumi@example.com</td>
+                <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">総務人事グループ</span></div></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">一般</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">有</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">○</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">1</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">4</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">株式会社Wisdom</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567890123</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ja</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">jpy</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/07/28</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/11</td>
+                <td class="sticky right-0 z-10 bg-white px-2 py-4">
+                  <div class="flex items-center justify-center gap-1">
+                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
+                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ページネーション -->
+        <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+          <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">
+            25件
+            <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+          </button>
+          <p class="flex-1 text-sm text-gray-700 text-right">1 / 1069件</p>
+          <div class="flex items-center gap-1 shrink-0">
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100">
+              <img src="assets/icons/angles-left.svg" class="w-[9px] h-auto" alt="最初のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100">
+              <img src="assets/icons/angle-left.svg" class="w-[5px] h-auto" alt="前のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">2</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">3</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">4</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">5</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50">
+              <img src="assets/icons/angle-right.svg" class="w-[6px] h-auto" alt="次のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50">
+              <img src="assets/icons/angles-right.svg" class="w-[9px] h-auto" alt="最後のページへ">
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
