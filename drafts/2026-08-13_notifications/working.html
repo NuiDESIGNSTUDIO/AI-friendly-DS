@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>通知一覧 | Sharewis管理画面</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { DEFAULT: '#00ABC9', light: '#33BCD4', lighter: '#E5F7FA' },
+          gray: {50:'#F9FAFB',100:'#F3F4F6',200:'#E5E7EB',300:'#D1D5DC',400:'#99A1AF',500:'#6A7282',600:'#4A5565',700:'#364153',800:'#1E2939',900:'#101828',950:'#030712'},
+          slate: {50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CAD5E2',400:'#90A1B9',500:'#62748E',600:'#45556C',700:'#314158',800:'#1D293D',900:'#0F172B',950:'#020618'},
+          sky: {50:'#F0F9FF',100:'#DFF2FE',200:'#B8E6FE',300:'#74D4FF',400:'#00BCFF',500:'#00A6F4',600:'#0084D1',700:'#0069A8',800:'#00598A',900:'#024A70',950:'#052F4A'},
+          red: {50:'#FEF2F2',100:'#FFE2E2',200:'#FFC9C9',300:'#FFA2A2',400:'#FF6467',500:'#FB2C36',600:'#E7000B',700:'#C10007',800:'#9F0712',900:'#82181A',950:'#460809'},
+          green: {50:'#F0FDF4',100:'#DCFCE7',200:'#B9F8CF',300:'#7BF1A8',400:'#05DF72',500:'#00C951',600:'#00A63E',700:'#008236',800:'#016630',900:'#0D542B',950:'#052E16'}
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+<div class="flex min-h-screen">
+
+  <!-- ============ Sidebar ============ -->
+  <aside class="w-[212px] shrink-0 bg-white border-r border-slate-200 flex flex-col pt-5 pb-4">
+    <div class="px-4 pb-5">
+      <img src="assets/img/sharewis-logo.png" alt="ShareWis" class="h-10 w-auto">
+    </div>
+    <nav class="px-2 flex flex-col gap-1">
+      <a href="#" class="px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">TOP</a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">売上</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セール</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">クーポン</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">ユーザー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース配布</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レポート</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レビュー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コメント</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">サイト</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セキュリティ</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50 mt-2"><span>ヘルプセンター</span><img src="assets/icons/arrow-up-right-from-square.svg" class="w-4 h-4" alt=""></a>
+    </nav>
+  </aside>
+
+  <!-- ============ Main ============ -->
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-end gap-4 px-4 shrink-0">
+      <button type="button" id="bell-btn" data-panel="bell-panel" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
+        <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
+      </button>
+      <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+    </header>
+
+    <main class="px-6 pt-6 pb-10 flex flex-col gap-6">
+      <h1 class="text-2xl font-semibold text-gray-900">通知一覧</h1>
+
+      <div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+        <div class="flex items-center gap-4 px-4 py-3 border-b border-slate-200">
+          <div class="flex-1 flex items-center gap-4">
+            <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 w-[87px]">
+              全て
+              <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+            </button>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs text-gray-700">未読のみ</span>
+            <button type="button" id="unread-toggle" role="switch" aria-checked="false" class="w-[42px] h-6 rounded-full bg-slate-400 border border-gray-300 flex items-center justify-start p-1 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <span class="w-4 h-4 rounded-full bg-white"></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="notification-rows">
+          <div class="notification-row unread flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-white">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/spinner-third.svg" class="w-6 h-6 shrink-0 animate-spin" alt="">
+              <p class="text-sm text-gray-900 truncate">レクチャー名を複製しています。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">たった今</p>
+          </div>
+          <div class="notification-row unread flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-white">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-exclamation.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-900 truncate">レクチャー名の複製に失敗しました。もう一度お試しください。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">30分前</p>
+          </div>
+          <div class="notification-row read flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-check.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-400 truncate">レクチャー名の複製が完了しました。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">1時間前</p>
+          </div>
+          <div class="notification-row read flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-check.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-400 truncate">コース「驚くほどにぐんぐん伸びる部下育成術 OJTのツボ」が公開されました。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">2時間前</p>
+          </div>
+          <div class="notification-row read flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-check.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-400 truncate">ユーザー一括登録が完了しました。（25件）</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">昨日 15:30</p>
+          </div>
+          <div class="notification-row read flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-exclamation.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-400 truncate">CSV一括インポートに失敗しました。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">昨日 10:00</p>
+          </div>
+          <div class="notification-row read flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-check.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-400 truncate">コース「ビジネスマナー基礎講座」の受講データエクスポートが完了しました。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">2025/08/13 09:15</p>
+          </div>
+          <div class="notification-row read flex items-center justify-between px-5 py-4 bg-slate-50">
+            <div class="flex-1 flex items-center gap-2 min-w-0">
+              <img src="assets/icons/circle-check.svg" class="w-6 h-6 shrink-0" alt="">
+              <p class="text-sm text-gray-400 truncate">セール「夏の特別セール」が開始されました。</p>
+            </div>
+            <p class="text-xs text-gray-500 shrink-0">2025/08/12 18:00</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+          <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">
+            25件
+            <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+          </button>
+          <p id="notification-count" class="flex-1 text-sm text-gray-700 text-right">1 / 1件</p>
+          <div class="flex items-center gap-1 shrink-0">
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100" disabled>
+              <img src="assets/icons/angles-left.svg" class="w-[9px] h-auto" alt="最初のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100" disabled>
+              <img src="assets/icons/angle-left.svg" class="w-[5px] h-auto" alt="前のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50">
+              <img src="assets/icons/angle-right.svg" class="w-[6px] h-auto" alt="次のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50">
+              <img src="assets/icons/angles-right.svg" class="w-[9px] h-auto" alt="最後のページへ">
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var toggle = document.getElementById('unread-toggle');
+  toggle.addEventListener('click', function () {
+    var on = toggle.getAttribute('aria-checked') === 'true';
+    toggle.setAttribute('aria-checked', String(!on));
+    toggle.classList.toggle('bg-brand', !on);
+    toggle.classList.toggle('bg-slate-400', on);
+    toggle.classList.toggle('justify-end', !on);
+    toggle.classList.toggle('justify-start', on);
+    document.querySelectorAll('.notification-row.read').forEach(function (row) {
+      row.classList.toggle('hidden', !on);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

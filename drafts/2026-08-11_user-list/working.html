@@ -14,7 +14,12 @@
             DEFAULT: '#00ABC9',
             light: '#33BCD4',
             lighter: '#E5F7FA'
-          }
+          },
+          gray: {50:'#F9FAFB',100:'#F3F4F6',200:'#E5E7EB',300:'#D1D5DC',400:'#99A1AF',500:'#6A7282',600:'#4A5565',700:'#364153',800:'#1E2939',900:'#101828',950:'#030712'},
+          slate: {50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CAD5E2',400:'#90A1B9',500:'#62748E',600:'#45556C',700:'#314158',800:'#1D293D',900:'#0F172B',950:'#020618'},
+          sky: {50:'#F0F9FF',100:'#DFF2FE',200:'#B8E6FE',300:'#74D4FF',400:'#00BCFF',500:'#00A6F4',600:'#0084D1',700:'#0069A8',800:'#00598A',900:'#024A70',950:'#052F4A'},
+          green: {50:'#F0FDF4',100:'#DCFCE7',200:'#B9F8CF',300:'#7BF1A8',400:'#05DF72',500:'#00C951',600:'#00A63E',700:'#008236',800:'#016630',900:'#0D542B',950:'#052E16'},
+          red: {50:'#FEF2F2',100:'#FFE2E2',200:'#FFC9C9',300:'#FFA2A2',400:'#FF6467',500:'#FB2C36',600:'#E7000B',700:'#C10007',800:'#9F0712',900:'#82181A',950:'#460809'}
         }
       }
     }
@@ -46,13 +51,13 @@
         <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
       </a>
 
-      <!-- ユーザー: 展開中セクション -->
+      <!-- ユーザー: 開閉可能セクション -->
       <div>
-        <div class="flex items-center gap-2 px-3 py-2 rounded-t-md bg-slate-50 text-sm text-gray-600">
-          <span class="flex-1">ユーザー</span>
-          <img src="assets/icons/angle-down.svg" class="w-4 h-4 rotate-180" alt="">
-        </div>
-        <div class="bg-slate-50 rounded-b-md pl-4 pr-2 pb-2 flex flex-col">
+        <button type="button" id="sidebar-user-toggle" aria-expanded="true" class="w-full flex items-center gap-2 px-3 py-2 rounded-t-md bg-slate-50 text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          <span class="flex-1 text-left">ユーザー</span>
+          <img id="sidebar-user-icon" src="assets/icons/angle-down.svg" class="w-4 h-4 rotate-180 transition-transform" alt="">
+        </button>
+        <div id="sidebar-user-panel" class="bg-slate-50 rounded-b-md pl-4 pr-2 pb-2 flex flex-col">
           <a href="#" class="px-1 py-1 rounded-md text-xs text-sky-600 font-medium">ユーザー一覧</a>
           <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">グループ一覧</a>
           <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">権限一覧</a>
@@ -100,11 +105,33 @@
 
     <!-- Header -->
     <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-end gap-4 px-4 shrink-0">
-      <button type="button" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
-        <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
-        <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
-      </button>
-      <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+      <div class="relative">
+        <button type="button" id="bell-btn" data-panel="bell-panel" aria-expanded="false" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
+          <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
+        </button>
+        <div id="bell-panel" class="dropdown-panel hidden absolute top-full right-0 mt-2 w-80 bg-white border border-slate-200 rounded-lg shadow p-2 z-30">
+          <p class="px-2 py-1 mb-1 text-sm font-semibold text-gray-900 border-b border-slate-100">通知</p>
+          <div class="flex items-start gap-2 p-2 rounded-md hover:bg-slate-50">
+            <span class="mt-1 w-2 h-2 rounded-full bg-red-500 shrink-0"></span>
+            <p class="text-sm text-gray-700 leading-5">一括登録に失敗しました。もう一度お試しください。</p>
+          </div>
+          <div class="flex items-start gap-2 p-2 rounded-md hover:bg-slate-50">
+            <span class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></span>
+            <p class="text-sm text-gray-700 leading-5">アップロードが完了しました。</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <button type="button" id="avatar-btn" data-panel="avatar-panel" aria-expanded="false" class="block rounded-full focus:outline-none focus:ring-2 focus:ring-brand/40">
+          <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+        </button>
+        <div id="avatar-panel" class="dropdown-panel hidden absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow py-1 z-30">
+          <p class="px-3 py-2 text-sm font-medium text-gray-900 border-b border-slate-100">Jane Cooper</p>
+          <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-slate-50">アカウント情報</a>
+          <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-slate-50">ログアウト</a>
+        </div>
+      </div>
     </header>
 
     <!-- Content -->
@@ -114,18 +141,18 @@
       <div class="flex items-center gap-8 mb-6">
         <h1 class="flex-1 text-2xl font-semibold text-gray-900">ユーザー一覧</h1>
         <div class="flex items-center gap-3">
-          <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50">
+          <button type="button" id="download-btn" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
             <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
             一覧をダウンロード
           </button>
-          <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter">
+          <button type="button" data-open-modal="bulk-register-modal" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter focus:outline-none focus:ring-2 focus:ring-brand/40">
             <img src="assets/icons/arrow-up-to-line.svg" class="w-4 h-4" alt="">
             一括登録
           </button>
-          <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-brand text-sm text-slate-50 hover:bg-sky-700">
+          <a href="new.html" class="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-brand text-sm text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">
             <img src="assets/icons/plus.svg" class="w-4 h-4" alt="">
             新規追加
-          </button>
+          </a>
         </div>
       </div>
 
@@ -135,27 +162,74 @@
         <!-- 検索・フィルタ・オプション -->
         <div class="flex items-center gap-4 px-4 py-3 border-b border-slate-200">
           <div class="flex items-center gap-4 flex-1 min-w-0">
-            <label class="flex items-center gap-1 px-2 py-2 rounded-md border border-gray-300 bg-white w-[223px]">
+            <label class="flex items-center gap-1 px-2 py-2 rounded-md border border-gray-300 bg-white w-[223px] focus-within:ring-2 focus-within:ring-brand/40">
               <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
               <input type="text" placeholder="ユーザーを検索する" class="flex-1 min-w-0 text-sm text-gray-900 placeholder-gray-300 outline-none">
             </label>
             <div class="flex items-center gap-2 shrink-0">
-              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50">
-                グループ
-                <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
-              </button>
-              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50">
-                全ての権限
-                <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
-              </button>
+              <div class="relative">
+                <button type="button" id="group-filter-btn" data-panel="group-filter-panel" aria-expanded="false" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+                  <span class="filter-label">グループ</span>
+                  <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+                </button>
+                <div id="group-filter-panel" class="dropdown-panel hidden absolute top-full left-0 mt-2 w-64 max-h-64 overflow-y-auto bg-white border border-slate-200 rounded-lg shadow p-2 z-30">
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> Dev
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> Design
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> マーケティング
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> Global Product Design Div.
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> システムインテグレーション開発部
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> 経営企画総務部広報IRグループ
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> 海外拠点オンラインサポートチーム
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> 営業第一課
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> 技術サポート
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="checkbox" class="group-filter-checkbox w-4 h-4 rounded border-gray-300"> 総務人事グループ
+                  </label>
+                </div>
+              </div>
+              <div class="relative">
+                <button type="button" id="permission-filter-btn" data-panel="permission-filter-panel" aria-expanded="false" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+                  <span class="filter-label">全ての権限</span>
+                  <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+                </button>
+                <div id="permission-filter-panel" class="dropdown-panel hidden absolute top-full left-0 mt-2 w-40 bg-white border border-slate-200 rounded-lg shadow p-2 z-30">
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="radio" name="permission-filter" value="全ての権限" class="permission-filter-radio w-4 h-4 border-gray-300" checked> 全ての権限
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="radio" name="permission-filter" value="管理者" class="permission-filter-radio w-4 h-4 border-gray-300"> 管理者
+                  </label>
+                  <label class="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-slate-50 text-sm text-gray-700">
+                    <input type="radio" name="permission-filter" value="一般" class="permission-filter-radio w-4 h-4 border-gray-300"> 一般
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
           <div class="flex items-center gap-2 shrink-0">
             <span class="text-xs text-gray-700">削除済みのユーザーを含める</span>
-            <button type="button" role="switch" aria-checked="true" class="w-[42px] h-6 rounded-full bg-brand border border-gray-300 flex items-center justify-end p-1">
-              <span class="w-4 h-4 rounded-full bg-white"></span>
+            <button type="button" id="delete-toggle" role="switch" aria-checked="true" class="w-[42px] h-6 rounded-full bg-brand border border-gray-300 flex items-center justify-end p-1 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <span id="delete-toggle-knob" class="w-4 h-4 rounded-full bg-white"></span>
             </button>
-            <button type="button" title="表示項目設定" class="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
+            <button type="button" id="column-settings-btn" data-open-modal="column-settings-modal" title="表示項目設定" class="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
               <img src="assets/icons/gear-complex.svg" class="w-4 h-4" alt="表示項目設定">
             </button>
           </div>
@@ -163,32 +237,32 @@
 
         <!-- テーブル本体(横スクロール、チェックボックス列/操作列は固定) -->
         <div class="overflow-x-auto">
-          <table class="border-collapse text-sm">
+          <table id="users-table" class="border-collapse text-sm">
             <thead>
               <tr class="bg-slate-100">
                 <th class="sticky left-0 z-10 bg-slate-100 w-16 h-12 p-4 align-middle">
-                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+                  <input type="checkbox" id="select-all-checkbox" class="w-4 h-4 rounded border-gray-300">
                 </th>
                 <th class="w-[83px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
                 <th class="w-[136px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
-                  <span class="inline-flex items-center gap-1">
+                  <button type="button" class="sort-btn inline-flex items-center gap-1 focus:outline-none" data-dir="none">
                     アカウント名
                     <span class="inline-flex flex-col items-center justify-center gap-0.5">
-                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
-                      <img src="assets/icons/sort-down.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-up.svg" class="sort-icon-up w-[9px] h-[5px] opacity-30" alt="">
+                      <img src="assets/icons/sort-down.svg" class="sort-icon-down w-[9px] h-[5px] opacity-30" alt="">
                     </span>
-                  </span>
+                  </button>
                 </th>
                 <th class="w-32 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">氏名</th>
                 <th class="w-[215px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">メールアドレス</th>
                 <th class="w-[248px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
-                  <span class="inline-flex items-center gap-1">
+                  <button type="button" class="sort-btn inline-flex items-center gap-1 focus:outline-none" data-dir="none">
                     グループ
                     <span class="inline-flex flex-col items-center justify-center gap-0.5">
-                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
-                      <img src="assets/icons/sort-down.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-up.svg" class="sort-icon-up w-[9px] h-[5px] opacity-30" alt="">
+                      <img src="assets/icons/sort-down.svg" class="sort-icon-down w-[9px] h-[5px] opacity-30" alt="">
                     </span>
-                  </span>
+                  </button>
                 </th>
                 <th class="w-[74px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">権限</th>
                 <th class="w-20 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">招待権限</th>
@@ -201,35 +275,49 @@
                 <th class="w-14 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">通貨</th>
                 <th class="w-[102px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">請求方法</th>
                 <th class="w-28 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
-                  <span class="inline-flex items-center gap-1">
+                  <button type="button" class="sort-btn inline-flex items-center gap-1 focus:outline-none" data-dir="none">
                     登録日時
                     <span class="inline-flex flex-col items-center justify-center gap-0.5">
-                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
-                      <img src="assets/icons/sort-down-alt.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-up.svg" class="sort-icon-up w-[9px] h-[5px] opacity-30" alt="">
+                      <img src="assets/icons/sort-down-alt.svg" class="sort-icon-down w-[9px] h-[5px] opacity-30" alt="">
                     </span>
-                  </span>
+                  </button>
                 </th>
                 <th class="w-32 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">
-                  <span class="inline-flex items-center gap-1">
+                  <button type="button" class="sort-btn inline-flex items-center gap-1 focus:outline-none" data-dir="none">
                     最終利用日時
                     <span class="inline-flex flex-col items-center justify-center gap-0.5">
-                      <img src="assets/icons/sort-up.svg" class="w-[9px] h-[5px]" alt="">
-                      <img src="assets/icons/sort-down-alt.svg" class="w-[9px] h-[5px]" alt="">
+                      <img src="assets/icons/sort-up.svg" class="sort-icon-up w-[9px] h-[5px] opacity-30" alt="">
+                      <img src="assets/icons/sort-down-alt.svg" class="sort-icon-down w-[9px] h-[5px] opacity-30" alt="">
                     </span>
-                  </span>
+                  </button>
                 </th>
                 <th class="sticky right-0 z-10 bg-slate-100 w-[68px] h-12 px-4"></th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
 
+              <!-- 選択中バー(行選択時のみ表示、thead直下に固定表示) -->
+              <tr id="bulk-bar-row" class="hidden">
+                <td colspan="19" class="sticky left-0 z-20 bg-gray-50 p-4">
+                  <div class="flex items-center gap-4">
+                    <span id="bulk-count" class="text-sm font-medium text-gray-900 whitespace-nowrap">1人のユーザーを選択しています。</span>
+                    <div class="flex items-center gap-2">
+                      <button type="button" id="group-edit-btn" class="p-2 rounded-md border border-slate-300 bg-white text-xs text-gray-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">グループを編集する</button>
+                      <button type="button" id="permission-edit-btn" class="p-2 rounded-md border border-slate-300 bg-white text-xs text-gray-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">権限を編集する</button>
+                      <button type="button" id="bulk-delete-btn" class="p-2 rounded-md border border-red-600 bg-white text-xs text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-400">削除する</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
               <!-- Row 1 -->
               <tr class="hover:bg-slate-50">
                 <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle">
-                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+                  <input type="checkbox" class="row-checkbox w-4 h-4 rounded border-gray-300">
                 </td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100234</td>
-                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tanaka_taro</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="show.html" class="text-sky-600 hover:underline">tanaka_taro</a></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">田中 太郎</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">tanaka.taro@example.com</td>
                 <td class="px-4 py-4">
@@ -252,10 +340,10 @@
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/10</td>
                 <td class="sticky right-0 z-10 bg-white px-2 py-4">
                   <div class="flex items-center justify-center gap-1">
-                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                    <a href="edit.html" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40">
                       <img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集">
-                    </button>
-                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                    </a>
+                    <button type="button" title="削除" data-name="田中 太郎" class="delete-btn flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40">
                       <img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除">
                     </button>
                   </div>
@@ -265,10 +353,10 @@
               <!-- Row 2: グループ多数(その他n件パターン) -->
               <tr class="hover:bg-slate-50">
                 <td class="sticky left-0 z-10 bg-white px-6 py-4 align-middle">
-                  <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+                  <input type="checkbox" class="row-checkbox w-4 h-4 rounded border-gray-300">
                 </td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">100235</td>
-                <td class="px-4 py-4 whitespace-nowrap align-top"><a href="#" class="text-sky-600 hover:underline">sato_hanako</a></td>
+                <td class="px-4 py-4 whitespace-nowrap align-top"><a href="show.html" class="text-sky-600 hover:underline">sato_hanako</a></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">佐藤 花子</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">sato.hanako@example.com</td>
                 <td class="px-4 py-4 align-top">
@@ -284,7 +372,13 @@
                     <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">技術サポート</span>
                     <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">総務人事グループ</span>
                   </div>
-                  <a href="#" class="inline-block mt-1 text-xs text-brand hover:underline">その他 2件</a>
+                  <div class="relative inline-block">
+                    <button type="button" class="group-more-btn inline-block mt-1 text-xs text-brand hover:underline focus:outline-none" data-tooltip-target="group-tooltip-100235">その他 2件</button>
+                    <div id="group-tooltip-100235" class="group-more-panel hidden absolute z-20 top-full left-0 mt-1 w-56 bg-slate-800 text-slate-50 text-xs rounded-md p-2 shadow">
+                      <p class="leading-5">カスタマーサクセス</p>
+                      <p class="leading-5">品質保証部</p>
+                    </div>
+                  </div>
                 </td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">一般</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">有</td>
@@ -300,22 +394,22 @@
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap align-top">2026/08/09</td>
                 <td class="sticky right-0 z-10 bg-white px-2 py-4 align-top">
                   <div class="flex items-center justify-center gap-1">
-                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                    <a href="edit.html" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40">
                       <img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集">
-                    </button>
-                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100">
+                    </a>
+                    <button type="button" title="削除" data-name="佐藤 花子" class="delete-btn flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40">
                       <img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除">
                     </button>
                   </div>
                 </td>
               </tr>
 
-              <!-- Row 3-8: 通常行(繰り返し) -->
+              <!-- Row 3-6: 通常行(繰り返し) -->
               <!-- 3 -->
               <tr class="hover:bg-slate-50">
-                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="row-checkbox w-4 h-4 rounded border-gray-300"></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100236</td>
-                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">suzuki_jiro</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="show.html" class="text-sky-600 hover:underline">suzuki_jiro</a></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">鈴木 次郎</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">suzuki.jiro@example.com</td>
                 <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Dev</span></div></td>
@@ -333,16 +427,16 @@
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/11</td>
                 <td class="sticky right-0 z-10 bg-white px-2 py-4">
                   <div class="flex items-center justify-center gap-1">
-                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
-                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                    <a href="edit.html" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></a>
+                    <button type="button" title="削除" data-name="鈴木 次郎" class="delete-btn flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
                   </div>
                 </td>
               </tr>
               <!-- 4 -->
               <tr class="hover:bg-slate-50">
-                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="row-checkbox w-4 h-4 rounded border-gray-300"></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100237</td>
-                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">yamada_misaki</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="show.html" class="text-sky-600 hover:underline">yamada_misaki</a></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">山田 美咲</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">yamada.misaki@example.com</td>
                 <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">マーケティング</span></div></td>
@@ -360,16 +454,16 @@
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/07</td>
                 <td class="sticky right-0 z-10 bg-white px-2 py-4">
                   <div class="flex items-center justify-center gap-1">
-                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
-                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                    <a href="edit.html" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></a>
+                    <button type="button" title="削除" data-name="山田 美咲" class="delete-btn flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
                   </div>
                 </td>
               </tr>
               <!-- 5 -->
               <tr class="hover:bg-slate-50">
-                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="row-checkbox w-4 h-4 rounded border-gray-300"></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100238</td>
-                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">kobayashi_ken</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="show.html" class="text-sky-600 hover:underline">kobayashi_ken</a></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">小林 健</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">kobayashi.ken@example.com</td>
                 <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">技術サポート</span></div></td>
@@ -387,16 +481,16 @@
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/06</td>
                 <td class="sticky right-0 z-10 bg-white px-2 py-4">
                   <div class="flex items-center justify-center gap-1">
-                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
-                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                    <a href="edit.html" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></a>
+                    <button type="button" title="削除" data-name="小林 健" class="delete-btn flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
                   </div>
                 </td>
               </tr>
               <!-- 6 -->
               <tr class="hover:bg-slate-50">
-                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"></td>
+                <td class="sticky left-0 z-10 bg-white h-[72px] px-6 py-4 align-middle"><input type="checkbox" class="row-checkbox w-4 h-4 rounded border-gray-300"></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">100239</td>
-                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">ito_ayumi</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="show.html" class="text-sky-600 hover:underline">ito_ayumi</a></td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">伊藤 あゆみ</td>
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ito.ayumi@example.com</td>
                 <td class="px-4 py-4"><div class="flex flex-wrap gap-1 max-w-[216px]"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">総務人事グループ</span></div></td>
@@ -414,8 +508,8 @@
                 <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/08/11</td>
                 <td class="sticky right-0 z-10 bg-white px-2 py-4">
                   <div class="flex items-center justify-center gap-1">
-                    <button type="button" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></button>
-                    <button type="button" title="削除" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
+                    <a href="edit.html" title="編集画面へ遷移" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="編集"></a>
+                    <button type="button" title="削除" data-name="伊藤 あゆみ" class="delete-btn flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand/40"><img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="削除"></button>
                   </div>
                 </td>
               </tr>
@@ -426,27 +520,27 @@
 
         <!-- ページネーション -->
         <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
-          <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">
+          <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
             25件
             <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
           </button>
           <p class="flex-1 text-sm text-gray-700 text-right">1 / 1069件</p>
           <div class="flex items-center gap-1 shrink-0">
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100">
+            <button type="button" id="page-first-btn" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100 disabled:opacity-40 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand/40" disabled>
               <img src="assets/icons/angles-left.svg" class="w-[9px] h-auto" alt="最初のページへ">
             </button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100">
+            <button type="button" id="page-prev-btn" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-50 hover:bg-gray-100 disabled:opacity-40 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand/40" disabled>
               <img src="assets/icons/angle-left.svg" class="w-[5px] h-auto" alt="前のページへ">
             </button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">2</button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">3</button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">4</button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50">5</button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50">
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand/40">1</button>
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">2</button>
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">3</button>
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">4</button>
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">5</button>
+            <button type="button" id="page-next-btn" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
               <img src="assets/icons/angle-right.svg" class="w-[6px] h-auto" alt="次のページへ">
             </button>
-            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50">
+            <button type="button" id="page-last-btn" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
               <img src="assets/icons/angles-right.svg" class="w-[9px] h-auto" alt="最後のページへ">
             </button>
           </div>
@@ -456,6 +550,551 @@
     </main>
   </div>
 </div>
+
+<!-- ============ モーダル: 表示項目の変更 ============ -->
+<div id="column-settings-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px] max-h-[85vh] flex flex-col overflow-hidden">
+    <div class="relative border-b border-slate-200 py-2 shrink-0">
+      <h2 class="text-base font-semibold text-slate-900 text-center">表示項目の変更</h2>
+      <button type="button" data-close-modal="column-settings-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex-1 overflow-y-auto flex flex-col gap-4">
+      <p class="text-sm text-gray-900 text-center leading-5">一覧に表示する項目を選択できます。<br>チェックした項目が表示されます。</p>
+      <div class="bg-gray-50 rounded-md p-4 flex flex-col max-h-64 overflow-y-auto">
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="3" checked> 氏名</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="4" checked> メールアドレス</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="5" checked> グループ</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="6" checked> 権限</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="7" checked> 招待権限</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="8" checked> パスワード要求</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="9" checked> 受講コース数</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="10" checked> 完了レクチャー数</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="11" checked> 会社名</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="12" checked> 法人番号</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="13" checked> 言語</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="14" checked> 通貨</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="15" checked> 請求方法</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="16" checked> 登録日時</label>
+        <label class="flex items-center gap-1 px-3 py-2 text-base text-gray-900"><input type="checkbox" class="column-toggle w-4 h-4 rounded border-gray-300" data-col-index="17" checked> 最終利用日時</label>
+      </div>
+      <div class="flex gap-4 items-start w-full">
+        <button type="button" data-close-modal="column-settings-modal" class="flex-1 px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" data-close-modal="column-settings-modal" class="flex-1 px-6 py-3 rounded-md bg-brand text-sm font-semibold text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">変更する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: 権限の変更 ============ -->
+<div id="permission-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px] overflow-visible">
+    <div class="relative border-b border-slate-200 py-2">
+      <h2 class="text-base font-semibold text-slate-900 text-center">権限の変更</h2>
+      <button type="button" data-close-modal="permission-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex flex-col gap-4">
+      <p id="permission-modal-message" class="text-sm text-gray-900 text-center">選択したユーザーの権限を変更します</p>
+      <div class="relative">
+        <button type="button" id="permission-dropdown-btn" aria-expanded="false" class="w-full flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-brand/40">
+          <span id="permission-dropdown-label" class="flex-1 text-left text-sm text-gray-300">選択してください</span>
+          <img id="permission-dropdown-icon" src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+        </button>
+        <div id="permission-dropdown-panel" class="dropdown-panel hidden absolute z-30 top-full left-0 mt-1 w-full bg-white rounded-md shadow ring-1 ring-black/5 p-2">
+          <button type="button" class="permission-option w-full text-left px-3 py-2 rounded text-sm text-gray-900 hover:bg-slate-50" data-value="管理者">管理者</button>
+          <button type="button" class="permission-option w-full text-left px-3 py-2 rounded text-sm text-gray-900 hover:bg-slate-50" data-value="一般">一般</button>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start w-full">
+        <button type="button" data-close-modal="permission-modal" class="flex-1 px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="permission-confirm-btn" disabled class="flex-1 px-6 py-3 rounded-md bg-brand text-sm font-semibold text-slate-50 hover:bg-sky-700 disabled:opacity-40 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand/40">変更する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: グループの追加 ============ -->
+<div id="group-add-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px]">
+    <div class="relative border-b border-slate-200 py-2">
+      <h2 class="text-base font-semibold text-slate-900 text-center">グループの追加</h2>
+      <button type="button" data-close-modal="group-add-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex flex-col gap-4">
+      <p id="group-add-modal-message" class="text-sm text-gray-900 text-center">選択したユーザーにグループを追加します</p>
+      <div id="group-add-input" class="flex flex-wrap gap-1 items-center border border-gray-300 rounded-md p-2">
+        <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+        <span id="group-add-selected" class="flex flex-wrap gap-1"></span>
+        <span id="group-add-placeholder" class="text-sm text-gray-300">グループ名を入力してください</span>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="group-add-option px-3 py-1.5 rounded-full border border-gray-300 text-xs text-gray-700 hover:bg-slate-50" data-group="Dev">Dev</button>
+        <button type="button" class="group-add-option px-3 py-1.5 rounded-full border border-gray-300 text-xs text-gray-700 hover:bg-slate-50" data-group="Design">Design</button>
+        <button type="button" class="group-add-option px-3 py-1.5 rounded-full border border-gray-300 text-xs text-gray-700 hover:bg-slate-50" data-group="営業第一課">営業第一課</button>
+        <button type="button" class="group-add-option px-3 py-1.5 rounded-full border border-gray-300 text-xs text-gray-700 hover:bg-slate-50" data-group="技術サポート">技術サポート</button>
+        <button type="button" class="group-add-option px-3 py-1.5 rounded-full border border-gray-300 text-xs text-gray-700 hover:bg-slate-50" data-group="総務人事グループ">総務人事グループ</button>
+      </div>
+      <div class="flex gap-4 items-start w-full">
+        <button type="button" id="group-add-cancel-btn" disabled class="flex-1 px-6 py-3 rounded-md bg-gray-100 text-sm font-semibold text-gray-300 disabled:pointer-events-none">キャンセル</button>
+        <button type="button" id="group-add-confirm-btn" disabled class="flex-1 px-6 py-3 rounded-md bg-gray-100 text-sm font-semibold text-gray-300 disabled:pointer-events-none">追加する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: アカウントの削除 ============ -->
+<div id="delete-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px]">
+    <div class="relative border-b border-slate-200 py-2">
+      <h2 class="text-base font-semibold text-slate-900 text-center">アカウントの削除</h2>
+      <button type="button" data-close-modal="delete-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex flex-col gap-4">
+      <p id="delete-modal-message" class="text-sm text-gray-900 text-center leading-5">削除します。<br>この操作は取り消せません。</p>
+      <div class="flex gap-4 items-start w-full">
+        <button type="button" data-close-modal="delete-modal" class="flex-1 px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="delete-confirm-btn" class="flex-1 px-6 py-3 rounded-md bg-red-600 text-sm font-semibold text-slate-50 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">削除する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: 一括登録 ============ -->
+<div id="bulk-register-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[600px] max-h-[90vh] flex flex-col overflow-hidden">
+    <div class="relative border-b border-slate-200 py-2 shrink-0">
+      <h2 class="text-base font-semibold text-slate-900 text-center">一括登録</h2>
+      <button type="button" data-close-modal="bulk-register-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex-1 overflow-y-auto flex flex-col gap-4">
+      <div class="flex flex-col gap-2 text-center">
+        <p class="text-sm text-gray-900">複数のユーザーをCSVファイルから一括登録できます</p>
+        <p class="text-xs text-gray-600 leading-4">※ ファイル中に不正な値があった場合は全ての登録がキャンセルされます</p>
+        <p class="text-xs text-gray-600 leading-4">※ サンプルのCSVデータが必要な場合は<span class="text-brand">こちら</span>よりダウンロードしてください。</p>
+      </div>
+      <div class="bg-slate-50 rounded-md p-4 flex flex-col items-center gap-4">
+        <p class="text-sm font-semibold text-gray-900">ファイルをアップロード</p>
+        <div class="flex items-center justify-center gap-3">
+          <button type="button" class="px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter focus:outline-none focus:ring-2 focus:ring-brand/40">ファイルを選択</button>
+          <p class="text-xs font-medium text-gray-400">ファイルは選択されていません</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-md w-full flex flex-col">
+          <label class="flex items-start gap-3 p-4">
+            <input type="radio" name="pw-option" class="mt-0.5 w-4 h-4 border-gray-300" checked>
+            <span class="flex flex-col gap-1.5 text-xs">
+              <span class="font-semibold text-gray-900">パスワードを管理者が設定する</span>
+              <span class="text-slate-500">登録完了後パスワード設定を依頼するメールは送信されません。</span>
+            </span>
+          </label>
+          <label class="flex items-start gap-3 p-4 border-t border-slate-200">
+            <input type="radio" name="pw-option" class="mt-0.5 w-4 h-4 border-gray-300">
+            <span class="flex flex-col gap-1.5 text-xs">
+              <span class="font-semibold text-gray-900">パスワードをユーザー自身が設定する</span>
+              <span class="text-slate-500">登録完了後パスワード設定を依頼するメールがユーザーに送信されます。</span>
+            </span>
+          </label>
+          <label class="flex items-start gap-3 p-4 border-t border-slate-200">
+            <input type="radio" name="pw-option" class="mt-0.5 w-4 h-4 border-gray-300">
+            <span class="flex flex-col gap-1.5 text-xs">
+              <span class="font-semibold text-gray-900">メールアドレスを指定しない</span>
+              <span class="text-slate-500">ユーザーにはダミーのメールアドレスが自動で割り当てられます。<br>管理者によるパスワードの設定は必須です。</span>
+            </span>
+          </label>
+          <label class="flex items-start gap-3 p-4 border-t border-slate-200">
+            <input type="radio" name="pw-option" class="mt-0.5 w-4 h-4 border-gray-300">
+            <span class="flex flex-col gap-1.5 text-xs">
+              <span class="font-semibold text-gray-900">一括更新する</span>
+              <span class="text-slate-500">アカウント名、メールアドレス、パスワードは一括更新できません。</span>
+            </span>
+          </label>
+        </div>
+        <label class="flex items-center gap-1 self-start">
+          <input type="checkbox" id="bulk-agree-checkbox" class="w-4 h-4 rounded border-gray-300">
+          <span class="text-xs text-gray-900">一括登録完了後、設定したパスワードをメールで通知する</span>
+        </label>
+      </div>
+      <div class="flex gap-4 items-start w-full">
+        <button type="button" data-close-modal="bulk-register-modal" class="flex-1 px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="bulk-register-confirm-btn" class="flex-1 px-6 py-3 rounded-md bg-brand text-sm font-semibold text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">登録する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ トースト通知 ============ -->
+<div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 w-80"></div>
+
+<script>
+(function () {
+  // ---- ドロップダウン(通知/アバター/フィルタ) ----
+  var panelButtons = document.querySelectorAll('[data-panel]');
+  function closeAllPanels() {
+    panelButtons.forEach(function (btn) {
+      var panel = document.getElementById(btn.dataset.panel);
+      if (panel) panel.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+  panelButtons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var panel = document.getElementById(btn.dataset.panel);
+      var wasHidden = panel.classList.contains('hidden');
+      closeAllPanels();
+      if (wasHidden) {
+        panel.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.querySelectorAll('.dropdown-panel').forEach(function (p) {
+    p.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+  document.addEventListener('click', function () {
+    closeAllPanels();
+    var permPanel = document.getElementById('permission-dropdown-panel');
+    var permIcon = document.getElementById('permission-dropdown-icon');
+    if (permPanel && !permPanel.classList.contains('hidden')) {
+      permPanel.classList.add('hidden');
+      permIcon.classList.remove('rotate-180');
+    }
+  });
+
+  // ---- モーダル ----
+  function openModal(id) {
+    var el = document.getElementById(id);
+    el.classList.remove('hidden');
+    el.classList.add('flex');
+  }
+  function closeModal(id) {
+    var el = document.getElementById(id);
+    el.classList.add('hidden');
+    el.classList.remove('flex');
+  }
+  document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
+    btn.addEventListener('click', function () { openModal(btn.dataset.openModal); });
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+    btn.addEventListener('click', function () { closeModal(btn.dataset.closeModal); });
+  });
+  document.querySelectorAll('.modal-backdrop').forEach(function (bd) {
+    bd.addEventListener('click', function (e) {
+      if (e.target === bd) { bd.classList.add('hidden'); bd.classList.remove('flex'); }
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop').forEach(function (bd) {
+        if (!bd.classList.contains('hidden')) { bd.classList.add('hidden'); bd.classList.remove('flex'); }
+      });
+      closeAllPanels();
+    }
+  });
+
+  // ---- トースト ----
+  var toastContainer = document.getElementById('toast-container');
+  function showToast(message, type) {
+    var dotColor = type === 'error' ? 'bg-red-500' : 'bg-green-500';
+    var el = document.createElement('div');
+    el.className = 'flex items-start gap-2 bg-white border border-slate-200 rounded-lg shadow px-4 py-3 text-sm text-gray-700';
+    el.innerHTML = '<span class="mt-1 w-2 h-2 rounded-full ' + dotColor + ' shrink-0"></span><span>' + message + '</span>';
+    toastContainer.appendChild(el);
+    setTimeout(function () { el.remove(); }, 3500);
+  }
+
+  // ---- 行選択・選択中バー(thead直下、Figma「1人のユーザーを選択しています。」) ----
+  var selectAll = document.getElementById('select-all-checkbox');
+  var bulkBarRow = document.getElementById('bulk-bar-row');
+  var bulkCount = document.getElementById('bulk-count');
+  function rowCheckboxes() { return Array.prototype.slice.call(document.querySelectorAll('.row-checkbox')); }
+  function checkedRows() { return rowCheckboxes().filter(function (cb) { return cb.checked; }).map(function (cb) { return cb.closest('tr'); }); }
+  function updateBulkBar() {
+    var all = rowCheckboxes();
+    var checked = all.filter(function (cb) { return cb.checked; });
+    if (checked.length > 0) {
+      bulkBarRow.classList.remove('hidden');
+      bulkCount.textContent = checked.length + '人のユーザーを選択しています。';
+    } else {
+      bulkBarRow.classList.add('hidden');
+    }
+    selectAll.checked = all.length > 0 && checked.length === all.length;
+    selectAll.indeterminate = checked.length > 0 && checked.length < all.length;
+  }
+  selectAll.addEventListener('change', function () {
+    rowCheckboxes().forEach(function (cb) { cb.checked = selectAll.checked; });
+    updateBulkBar();
+  });
+  document.getElementById('users-table').addEventListener('change', function (e) {
+    if (e.target.classList.contains('row-checkbox')) updateBulkBar();
+  });
+
+  // ---- 削除済みユーザーを含めるトグル ----
+  var deleteToggle = document.getElementById('delete-toggle');
+  deleteToggle.addEventListener('click', function () {
+    var on = deleteToggle.getAttribute('aria-checked') === 'true';
+    deleteToggle.setAttribute('aria-checked', String(!on));
+    deleteToggle.classList.toggle('bg-brand', !on);
+    deleteToggle.classList.toggle('bg-gray-200', on);
+    deleteToggle.classList.toggle('justify-end', !on);
+    deleteToggle.classList.toggle('justify-start', on);
+  });
+
+  // ---- 表示項目(列)の表示切替 ----
+  document.querySelectorAll('.column-toggle').forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      var idx = Number(cb.dataset.colIndex);
+      document.querySelectorAll('#users-table tr').forEach(function (tr) {
+        var cell = tr.children[idx];
+        if (cell) cell.classList.toggle('hidden', !cb.checked);
+      });
+    });
+  });
+
+  // ---- ソートアイコン切替(見た目のみ) ----
+  document.querySelectorAll('.sort-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var up = btn.querySelector('.sort-icon-up');
+      var down = btn.querySelector('.sort-icon-down');
+      var dir = btn.dataset.dir || 'none';
+      dir = dir === 'none' ? 'asc' : (dir === 'asc' ? 'desc' : 'none');
+      btn.dataset.dir = dir;
+      up.classList.toggle('opacity-100', dir === 'asc');
+      up.classList.toggle('opacity-30', dir !== 'asc');
+      down.classList.toggle('opacity-100', dir === 'desc');
+      down.classList.toggle('opacity-30', dir !== 'desc');
+    });
+  });
+
+  // ---- グループ/権限フィルタのラベル更新 ----
+  var groupFilterBtn = document.getElementById('group-filter-btn');
+  document.querySelectorAll('.group-filter-checkbox').forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      var n = document.querySelectorAll('.group-filter-checkbox:checked').length;
+      groupFilterBtn.querySelector('.filter-label').textContent = n > 0 ? 'グループ (' + n + ')' : 'グループ';
+    });
+  });
+  var permissionFilterBtn = document.getElementById('permission-filter-btn');
+  document.querySelectorAll('.permission-filter-radio').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      permissionFilterBtn.querySelector('.filter-label').textContent = radio.value;
+      closeAllPanels();
+    });
+  });
+
+  // ---- 権限の変更モーダル(カスタムドロップダウン、バーの「権限を編集する」から起動) ----
+  var pendingPermissionRows = [];
+  var permissionDropdownBtn = document.getElementById('permission-dropdown-btn');
+  var permissionDropdownPanel = document.getElementById('permission-dropdown-panel');
+  var permissionDropdownLabel = document.getElementById('permission-dropdown-label');
+  var permissionDropdownIcon = document.getElementById('permission-dropdown-icon');
+  var permissionConfirmBtn = document.getElementById('permission-confirm-btn');
+  var permissionModalMessage = document.getElementById('permission-modal-message');
+  var permissionSelectedValue = '';
+
+  document.getElementById('permission-edit-btn').addEventListener('click', function () {
+    pendingPermissionRows = checkedRows();
+    permissionModalMessage.textContent = '選択した' + pendingPermissionRows.length + '名の権限を変更します';
+    permissionSelectedValue = '';
+    permissionDropdownLabel.textContent = '選択してください。';
+    permissionDropdownLabel.classList.add('text-gray-300');
+    permissionDropdownLabel.classList.remove('text-gray-900');
+    permissionConfirmBtn.disabled = true;
+    permissionDropdownPanel.classList.add('hidden');
+    permissionDropdownIcon.classList.remove('rotate-180');
+    openModal('permission-modal');
+  });
+  permissionDropdownBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var willOpen = permissionDropdownPanel.classList.contains('hidden');
+    permissionDropdownPanel.classList.toggle('hidden', !willOpen);
+    permissionDropdownIcon.classList.toggle('rotate-180', willOpen);
+    permissionDropdownBtn.setAttribute('aria-expanded', String(willOpen));
+  });
+  permissionDropdownPanel.addEventListener('click', function (e) { e.stopPropagation(); });
+  document.querySelectorAll('.permission-option').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      permissionSelectedValue = opt.dataset.value;
+      permissionDropdownLabel.textContent = permissionSelectedValue;
+      permissionDropdownLabel.classList.remove('text-gray-300');
+      permissionDropdownLabel.classList.add('text-gray-900');
+      permissionConfirmBtn.disabled = false;
+      permissionDropdownPanel.classList.add('hidden');
+      permissionDropdownIcon.classList.remove('rotate-180');
+    });
+  });
+  permissionConfirmBtn.addEventListener('click', function () {
+    if (!permissionSelectedValue || pendingPermissionRows.length === 0) return;
+    pendingPermissionRows.forEach(function (row) {
+      var cell = row.children[6];
+      if (cell) cell.textContent = permissionSelectedValue;
+    });
+    var count = pendingPermissionRows.length;
+    closeModal('permission-modal');
+    showToast(count + '名の権限を' + permissionSelectedValue + 'に変更しました。', 'success');
+  });
+
+  // ---- グループの追加モーダル(バーの「グループを編集する」から起動) ----
+  var pendingGroupRows = [];
+  var groupAddSelectedGroups = [];
+  var groupAddModalMessage = document.getElementById('group-add-modal-message');
+  var groupAddSelected = document.getElementById('group-add-selected');
+  var groupAddPlaceholder = document.getElementById('group-add-placeholder');
+  var groupAddCancelBtn = document.getElementById('group-add-cancel-btn');
+  var groupAddConfirmBtn = document.getElementById('group-add-confirm-btn');
+
+  function renderGroupAddSelection() {
+    groupAddSelected.innerHTML = '';
+    groupAddSelectedGroups.forEach(function (name) {
+      var pill = document.createElement('span');
+      pill.className = 'px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap';
+      pill.textContent = name;
+      groupAddSelected.appendChild(pill);
+    });
+    groupAddPlaceholder.classList.toggle('hidden', groupAddSelectedGroups.length > 0);
+    var hasSelection = groupAddSelectedGroups.length > 0;
+    [groupAddCancelBtn, groupAddConfirmBtn].forEach(function (btn) {
+      btn.disabled = !hasSelection;
+      btn.classList.toggle('bg-gray-100', !hasSelection);
+      btn.classList.toggle('text-gray-300', !hasSelection);
+    });
+    groupAddCancelBtn.classList.toggle('border', hasSelection);
+    groupAddCancelBtn.classList.toggle('border-slate-300', hasSelection);
+    groupAddCancelBtn.classList.toggle('bg-white', hasSelection);
+    groupAddCancelBtn.classList.toggle('text-gray-600', hasSelection);
+    groupAddConfirmBtn.classList.toggle('bg-brand', hasSelection);
+    groupAddConfirmBtn.classList.toggle('text-slate-50', hasSelection);
+  }
+  document.getElementById('group-edit-btn').addEventListener('click', function () {
+    pendingGroupRows = checkedRows();
+    groupAddModalMessage.textContent = '選択した' + pendingGroupRows.length + '名にグループを追加します';
+    groupAddSelectedGroups = [];
+    renderGroupAddSelection();
+    document.querySelectorAll('.group-add-option').forEach(function (o) { o.classList.remove('bg-brand-lighter', 'border-brand', 'text-brand'); });
+    openModal('group-add-modal');
+  });
+  document.querySelectorAll('.group-add-option').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      var name = opt.dataset.group;
+      var idx = groupAddSelectedGroups.indexOf(name);
+      if (idx === -1) {
+        groupAddSelectedGroups.push(name);
+        opt.classList.add('bg-brand-lighter', 'border-brand', 'text-brand');
+      } else {
+        groupAddSelectedGroups.splice(idx, 1);
+        opt.classList.remove('bg-brand-lighter', 'border-brand', 'text-brand');
+      }
+      renderGroupAddSelection();
+    });
+  });
+  groupAddConfirmBtn.addEventListener('click', function () {
+    if (groupAddSelectedGroups.length === 0) return;
+    pendingGroupRows.forEach(function (row) {
+      var cell = row.children[5];
+      var wrap = cell && cell.querySelector('.flex-wrap');
+      if (!wrap) return;
+      groupAddSelectedGroups.forEach(function (name) {
+        var pill = document.createElement('span');
+        pill.className = 'px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap';
+        pill.textContent = name;
+        wrap.appendChild(pill);
+      });
+    });
+    var count = pendingGroupRows.length;
+    closeModal('group-add-modal');
+    showToast(count + '名にグループを追加しました。', 'success');
+  });
+
+  // ---- アカウントの削除モーダル(単体・一括共通、常に「選択したN名の」表記) ----
+  var pendingDeleteRows = [];
+  var deleteModalMessage = document.getElementById('delete-modal-message');
+  document.querySelectorAll('.delete-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      pendingDeleteRows = [btn.closest('tr')];
+      deleteModalMessage.innerHTML = '選択した1名のアカウントを削除します。<br>この操作は取り消せません。';
+      openModal('delete-modal');
+    });
+  });
+  document.getElementById('bulk-delete-btn').addEventListener('click', function () {
+    pendingDeleteRows = checkedRows();
+    deleteModalMessage.innerHTML = '選択した' + pendingDeleteRows.length + '名のアカウントを削除します。<br>この操作は取り消せません。';
+    openModal('delete-modal');
+  });
+  document.getElementById('delete-confirm-btn').addEventListener('click', function () {
+    pendingDeleteRows.forEach(function (row) { row.remove(); });
+    pendingDeleteRows = [];
+    closeModal('delete-modal');
+    updateBulkBar();
+    showToast('アカウントを削除しました。', 'success');
+  });
+
+  // ---- 一括登録モーダル ----
+  var bulkAgree = document.getElementById('bulk-agree-checkbox');
+  var bulkRegisterConfirmBtn = document.getElementById('bulk-register-confirm-btn');
+  bulkRegisterConfirmBtn.addEventListener('click', function () {
+    closeModal('bulk-register-modal');
+    showToast('一括登録を受け付けました。完了までしばらくお待ちください。', 'success');
+    bulkAgree.checked = false;
+  });
+
+  // ---- ダウンロードボタン ----
+  document.getElementById('download-btn').addEventListener('click', function () {
+    showToast('ダウンロードを開始しました。', 'success');
+  });
+
+  // ---- グループタグ「その他n件」ホバー相当のツールチップ ----
+  document.querySelectorAll('.group-more-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var panel = document.getElementById(btn.dataset.tooltipTarget);
+      var wasHidden = panel.classList.contains('hidden');
+      document.querySelectorAll('.group-more-panel').forEach(function (p) { p.classList.add('hidden'); });
+      if (wasHidden) panel.classList.remove('hidden');
+    });
+  });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.group-more-panel').forEach(function (p) { p.classList.add('hidden'); });
+  });
+
+  // ---- サイドバー「ユーザー」セクションの開閉 ----
+  var sidebarUserToggle = document.getElementById('sidebar-user-toggle');
+  var sidebarUserPanel = document.getElementById('sidebar-user-panel');
+  var sidebarUserIcon = document.getElementById('sidebar-user-icon');
+  sidebarUserToggle.addEventListener('click', function () {
+    var isOpen = !sidebarUserPanel.classList.contains('hidden');
+    sidebarUserPanel.classList.toggle('hidden', isOpen);
+    sidebarUserIcon.classList.toggle('rotate-180', !isOpen);
+    sidebarUserToggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // ---- ページネーション ----
+  var pageFirstBtn = document.getElementById('page-first-btn');
+  var pagePrevBtn = document.getElementById('page-prev-btn');
+  document.querySelectorAll('.page-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.page-btn').forEach(function (b) {
+        b.classList.remove('text-brand', 'font-bold');
+        b.classList.add('bg-white', 'text-gray-700', 'font-medium', 'hover:bg-gray-50');
+      });
+      btn.classList.remove('bg-white', 'text-gray-700', 'font-medium', 'hover:bg-gray-50');
+      btn.classList.add('text-brand', 'font-bold');
+      var isFirstPage = btn.textContent.trim() === '1';
+      pageFirstBtn.disabled = isFirstPage;
+      pagePrevBtn.disabled = isFirstPage;
+    });
+  });
+
+  updateBulkBar();
+})();
+</script>
 
 </body>
 </html>

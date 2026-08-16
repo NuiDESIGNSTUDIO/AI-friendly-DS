@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ユーザー編集 | Sharewis管理画面</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { DEFAULT: '#00ABC9', light: '#33BCD4', lighter: '#E5F7FA' },
+          gray: {50:'#F9FAFB',100:'#F3F4F6',200:'#E5E7EB',300:'#D1D5DC',400:'#99A1AF',500:'#6A7282',600:'#4A5565',700:'#364153',800:'#1E2939',900:'#101828',950:'#030712'},
+          slate: {50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CAD5E2',400:'#90A1B9',500:'#62748E',600:'#45556C',700:'#314158',800:'#1D293D',900:'#0F172B',950:'#020618'},
+          sky: {50:'#F0F9FF',100:'#DFF2FE',200:'#B8E6FE',300:'#74D4FF',400:'#00BCFF',500:'#00A6F4',600:'#0084D1',700:'#0069A8',800:'#00598A',900:'#024A70',950:'#052F4A'},
+          red: {50:'#FEF2F2',100:'#FFE2E2',200:'#FFC9C9',300:'#FFA2A2',400:'#FF6467',500:'#FB2C36',600:'#E7000B',700:'#C10007',800:'#9F0712',900:'#82181A',950:'#460809'},
+          green: {50:'#F0FDF4',100:'#DCFCE7',200:'#B9F8CF',300:'#7BF1A8',400:'#05DF72',500:'#00C951',600:'#00A63E',700:'#008236',800:'#016630',900:'#0D542B',950:'#052E16'}
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+<div class="flex min-h-screen">
+
+  <!-- ============ Sidebar ============ -->
+  <aside class="w-[212px] shrink-0 bg-white border-r border-slate-200 flex flex-col pt-5 pb-4">
+    <div class="px-4 pb-5">
+      <img src="assets/img/sharewis-logo.png" alt="ShareWis" class="h-10 w-auto">
+    </div>
+    <nav class="px-2 flex flex-col gap-1">
+      <a href="#" class="px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">TOP</a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">売上</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セール</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">クーポン</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <div>
+        <div class="flex items-center gap-2 px-3 py-2 rounded-t-md bg-slate-50 text-sm text-gray-600">
+          <span class="flex-1">ユーザー</span>
+          <img src="assets/icons/angle-down.svg" class="w-4 h-4 rotate-180" alt="">
+        </div>
+        <div class="bg-slate-50 rounded-b-md pl-4 pr-2 pb-2 flex flex-col">
+          <a href="index.html" class="px-1 py-1 rounded-md text-xs text-sky-600 font-medium">ユーザー一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">グループ一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">権限一覧</a>
+        </div>
+      </div>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース配布</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レポート</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レビュー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コメント</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">サイト</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セキュリティ</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50 mt-2"><span>ヘルプセンター</span><img src="assets/icons/arrow-up-right-from-square.svg" class="w-4 h-4" alt=""></a>
+    </nav>
+  </aside>
+
+  <!-- ============ Main ============ -->
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-end gap-4 px-4 shrink-0">
+      <button type="button" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
+        <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
+        <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
+      </button>
+      <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+    </header>
+
+    <main class="p-6 max-w-[1068px]">
+
+      <!-- タイトル -->
+      <div class="flex items-center gap-8 mb-6">
+        <h1 class="flex-1 text-2xl font-semibold text-gray-900">ユーザー編集</h1>
+        <div class="flex items-center gap-3">
+          <a href="show.html" class="px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</a>
+          <a href="show.html" class="px-3 py-2 rounded-md bg-brand text-sm text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">保存する</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6">
+
+        <!-- アカウント設定 -->
+        <section class="bg-white border border-slate-200 rounded-lg p-6 flex flex-col gap-6">
+          <h2 class="text-base font-semibold text-gray-900">アカウント設定</h2>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">メールアドレス</label>
+            <input type="text" value="sharewis@sample.com" class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">アカウント名</label>
+            <input type="text" value="sheawis" class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">パスワード</label>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-1 w-[300px] px-3 py-1.5 rounded-md border border-gray-300 bg-gray-100">
+                <span class="flex-1 text-sm text-gray-300 tracking-widest select-none">●●●●●●●●●●●●</span>
+                <span class="flex items-center justify-center w-6 h-6 rounded-md">
+                  <img src="assets/icons/eye-close.svg" class="w-4 h-4" alt="非表示">
+                </span>
+              </div>
+              <button type="button" data-open-modal="password-modal" class="px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">パスワードを変更する</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- プロフィール情報 -->
+        <section class="bg-white border border-slate-200 rounded-lg px-6 py-8 flex flex-col gap-6">
+          <h2 class="text-base font-semibold text-gray-900">プロフィール情報</h2>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">氏名</label>
+            <input type="text" value="シェアウィズ　ベース" class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">グループ</label>
+            <div class="w-[300px] flex flex-wrap gap-1 items-center p-2 rounded-md border border-gray-300">
+              <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Dev</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">マーケティング</span>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">プロフィール画像</label>
+            <div class="flex-1 flex items-start gap-6 bg-slate-50 rounded-xl px-6 py-5">
+              <div class="w-[60px] h-[60px] rounded-full bg-slate-200 flex items-center justify-center shrink-0">
+                <img src="assets/icons/user-placeholder.svg" class="w-5 h-6" alt="">
+              </div>
+              <div class="flex-1 flex flex-col gap-2">
+                <div class="flex items-center gap-4">
+                  <button type="button" class="w-[180px] px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">ファイルを選択</button>
+                  <p class="text-[11px] text-gray-500">選択されていません</p>
+                </div>
+                <p class="text-xs text-gray-500">最大700KBまで (GIF, JPG, PNG)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">好きな食べ物</label>
+            <input type="text" value="みかん" class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          </div>
+        </section>
+
+        <!-- 権限設定 -->
+        <section class="bg-white border border-slate-200 rounded-lg px-6 py-8 flex flex-col gap-6">
+          <h2 class="text-base font-semibold text-gray-900">権限設定</h2>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">権限</label>
+            <select class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <option>一般</option>
+              <option>管理者</option>
+            </select>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">招待権限</label>
+            <select class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <option>10人招待枠権限</option>
+              <option>招待権限なし</option>
+            </select>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">閲覧可能グループ設定</label>
+            <div class="flex-1 flex flex-col gap-4">
+
+              <label class="flex items-start gap-3 p-4 rounded-md border border-slate-200 cursor-pointer">
+                <input type="radio" name="group-visibility" value="all" checked class="visibility-radio mt-0.5 w-4 h-4 accent-brand">
+                <span class="text-xs font-semibold text-gray-900">すべてのグループを閲覧可能</span>
+              </label>
+
+              <div class="rounded-md border border-slate-200 overflow-hidden">
+                <label class="flex items-start gap-3 p-4 cursor-pointer">
+                  <input type="radio" name="group-visibility" value="shared" class="visibility-radio mt-0.5 w-4 h-4 accent-brand">
+                  <span class="text-xs font-semibold text-gray-900">特定のグループのみ閲覧可能（ユーザー・コース共通）</span>
+                </label>
+                <div class="visibility-panel hidden border-t border-slate-200 p-4 flex flex-col gap-3" data-panel-for="shared">
+                  <p class="text-xs text-gray-500">閲覧可能なユーザー及びコースが属するグループ</p>
+                  <div class="flex flex-wrap gap-1 items-center p-2 rounded-md border border-gray-300">
+                    <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Dev</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span>
+                  </div>
+                  <p class="text-xs text-gray-500 leading-4">指定したグループはユーザーとコースの両方に適用されます。<br>複数のグループを指定すると、いずれかのグループに属するユーザーとコースが対象となります。<br><span class="text-brand">詳細はこちら</span></p>
+                </div>
+              </div>
+
+              <div class="rounded-md border border-slate-200 overflow-hidden">
+                <label class="flex items-start gap-3 p-4 cursor-pointer">
+                  <input type="radio" name="group-visibility" value="individual" class="visibility-radio mt-0.5 w-4 h-4 accent-brand">
+                  <span class="text-xs font-semibold text-gray-900">特定のグループのみ閲覧可能（ユーザー・コース個別設定）</span>
+                </label>
+                <div class="visibility-panel hidden border-t border-slate-200 p-4 flex flex-col gap-6" data-panel-for="individual">
+                  <div class="flex flex-col gap-2">
+                    <p class="text-xs text-gray-500">閲覧可能なユーザーが属するグループ</p>
+                    <div class="flex flex-wrap gap-1 items-center p-2 rounded-md border border-gray-300">
+                      <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+                      <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Dev</span>
+                    </div>
+                    <label class="flex items-center gap-1"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"><span class="text-xs text-gray-900">すべてのユーザーを閲覧可能にする</span></label>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <p class="text-xs text-gray-500">閲覧可能なコースが属するグループ</p>
+                    <div class="flex flex-wrap gap-1 items-center p-2 rounded-md border border-gray-300">
+                      <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+                      <span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800 whitespace-nowrap">Design</span>
+                    </div>
+                    <label class="flex items-center gap-1"><input type="checkbox" class="w-4 h-4 rounded border-gray-300"><span class="text-xs text-gray-900">すべてのコースを閲覧可能にする</span></label>
+                    <p class="text-xs text-gray-500 leading-4">ユーザーとコースそれぞれにグループを指定できます。<br>複数のグループを指定すると、いずれかのグループに属するユーザーやコースが対象となります。<br><span class="text-brand">詳細はこちら</span></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- お支払い・所属企業情報 -->
+        <section class="bg-white border border-slate-200 rounded-lg px-6 py-8 flex flex-col gap-6">
+          <h2 class="text-base font-semibold text-gray-900">お支払い・所属企業情報</h2>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">法人番号</label>
+            <div class="flex flex-col gap-2">
+              <input type="text" value="0123456789123" class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <p class="text-xs text-gray-500">13桁の数字で入力してください。</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">会社名</label>
+            <div class="flex flex-col gap-2">
+              <input type="text" value="株式会社シェアウィズ" class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <p class="text-xs text-gray-500">株式会社など省略せずご入力ください</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">請求方法</label>
+            <select class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <option>請求書支払い</option>
+              <option>クレジットカード</option>
+            </select>
+          </div>
+
+          <div class="flex items-start gap-32">
+            <label class="w-[140px] shrink-0 text-sm text-gray-500 pt-2">通貨</label>
+            <select class="w-[300px] px-3 py-2 rounded-md border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <option>¥-日本円</option>
+              <option>$-米ドル</option>
+            </select>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============ モーダル: パスワードを変更する ============ -->
+<div id="password-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px]">
+    <div class="relative border-b border-slate-200 py-2">
+      <h2 class="text-base font-semibold text-slate-900 text-center">パスワードを変更する</h2>
+      <button type="button" data-close-modal="password-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-6 flex flex-col items-center gap-6">
+      <p class="text-sm text-gray-900">新しいパスワードを入力</p>
+      <div class="w-full flex items-center gap-1 px-3 py-1.5 rounded-md border border-gray-300">
+        <input id="new-password-input" type="password" placeholder="パスワードを入力" class="flex-1 min-w-0 text-sm text-gray-900 placeholder-gray-300 outline-none">
+        <button type="button" id="toggle-password-visibility" class="flex items-center justify-center w-6 h-6 rounded-md hover:bg-slate-50">
+          <img id="toggle-password-icon" src="assets/icons/eye-close.svg" class="w-4 h-4" alt="表示切替">
+        </button>
+      </div>
+      <div class="flex gap-4">
+        <button type="button" data-close-modal="password-modal" class="w-[180px] px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="password-confirm-btn" class="w-[180px] px-6 py-3 rounded-md bg-brand text-sm font-semibold text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">変更する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 w-80"></div>
+
+<script>
+(function () {
+  function openModal(id) { var el = document.getElementById(id); el.classList.remove('hidden'); el.classList.add('flex'); }
+  function closeModal(id) { var el = document.getElementById(id); el.classList.add('hidden'); el.classList.remove('flex'); }
+  document.querySelectorAll('[data-open-modal]').forEach(function (btn) { btn.addEventListener('click', function () { openModal(btn.dataset.openModal); }); });
+  document.querySelectorAll('[data-close-modal]').forEach(function (btn) { btn.addEventListener('click', function () { closeModal(btn.dataset.closeModal); }); });
+  document.querySelectorAll('.modal-backdrop').forEach(function (bd) {
+    bd.addEventListener('click', function (e) { if (e.target === bd) { bd.classList.add('hidden'); bd.classList.remove('flex'); } });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop').forEach(function (bd) { if (!bd.classList.contains('hidden')) { bd.classList.add('hidden'); bd.classList.remove('flex'); } });
+    }
+  });
+
+  var toastContainer = document.getElementById('toast-container');
+  function showToast(message) {
+    var el = document.createElement('div');
+    el.className = 'flex items-start gap-2 bg-white border border-slate-200 rounded-lg shadow px-4 py-3 text-sm text-gray-700';
+    el.innerHTML = '<span class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></span><span>' + message + '</span>';
+    toastContainer.appendChild(el);
+    setTimeout(function () { el.remove(); }, 3500);
+  }
+
+  // 閲覧可能グループ設定: ラジオ選択で詳細パネルを開閉
+  document.querySelectorAll('.visibility-radio').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      document.querySelectorAll('.visibility-panel').forEach(function (p) { p.classList.add('hidden'); });
+      var panel = document.querySelector('.visibility-panel[data-panel-for="' + radio.value + '"]');
+      if (panel) panel.classList.remove('hidden');
+    });
+  });
+
+  // パスワード変更モーダル: 表示/非表示切替
+  var pwInput = document.getElementById('new-password-input');
+  var pwIcon = document.getElementById('toggle-password-icon');
+  document.getElementById('toggle-password-visibility').addEventListener('click', function () {
+    var isPassword = pwInput.type === 'password';
+    pwInput.type = isPassword ? 'text' : 'password';
+  });
+  document.getElementById('password-confirm-btn').addEventListener('click', function () {
+    closeModal('password-modal');
+    pwInput.value = '';
+    pwInput.type = 'password';
+    showToast('パスワードを変更しました。');
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ユーザー詳細 | Sharewis管理画面</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { DEFAULT: '#00ABC9', light: '#33BCD4', lighter: '#E5F7FA' },
+          gray: {50:'#F9FAFB',100:'#F3F4F6',200:'#E5E7EB',300:'#D1D5DC',400:'#99A1AF',500:'#6A7282',600:'#4A5565',700:'#364153',800:'#1E2939',900:'#101828',950:'#030712'},
+          slate: {50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CAD5E2',400:'#90A1B9',500:'#62748E',600:'#45556C',700:'#314158',800:'#1D293D',900:'#0F172B',950:'#020618'},
+          sky: {50:'#F0F9FF',100:'#DFF2FE',200:'#B8E6FE',300:'#74D4FF',400:'#00BCFF',500:'#00A6F4',600:'#0084D1',700:'#0069A8',800:'#00598A',900:'#024A70',950:'#052F4A'},
+          red: {50:'#FEF2F2',100:'#FFE2E2',200:'#FFC9C9',300:'#FFA2A2',400:'#FF6467',500:'#FB2C36',600:'#E7000B',700:'#C10007',800:'#9F0712',900:'#82181A',950:'#460809'},
+          amber: {100:'#FEF3C6',800:'#973C00'},
+          yellow: {100:'#FEF9C2',800:'#894B00'},
+          blue: {100:'#DBEAFE',800:'#193CB8'},
+          green: {50:'#F0FDF4',100:'#DCFCE7',200:'#B9F8CF',300:'#7BF1A8',400:'#05DF72',500:'#00C951',600:'#00A63E',700:'#008236',800:'#016630',900:'#0D542B',950:'#052E16'}
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+<div class="flex min-h-screen">
+
+  <!-- ============ Sidebar ============ -->
+  <aside class="w-[212px] shrink-0 bg-white border-r border-slate-200 flex flex-col pt-5 pb-4">
+    <div class="px-4 pb-5">
+      <img src="assets/img/sharewis-logo.png" alt="ShareWis" class="h-10 w-auto">
+    </div>
+    <nav class="px-2 flex flex-col gap-1">
+      <a href="#" class="px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">TOP</a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">売上</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セール</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">クーポン</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <div>
+        <div class="flex items-center gap-2 px-3 py-2 rounded-t-md bg-slate-50 text-sm text-gray-600">
+          <span class="flex-1">ユーザー</span>
+          <img src="assets/icons/angle-down.svg" class="w-4 h-4 rotate-180" alt="">
+        </div>
+        <div class="bg-slate-50 rounded-b-md pl-4 pr-2 pb-2 flex flex-col">
+          <a href="index.html" class="px-1 py-1 rounded-md text-xs text-sky-600 font-medium">ユーザー一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">グループ一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">権限一覧</a>
+        </div>
+      </div>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース配布</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レポート</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レビュー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コメント</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">サイト</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セキュリティ</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50 mt-2"><span>ヘルプセンター</span><img src="assets/icons/arrow-up-right-from-square.svg" class="w-4 h-4" alt=""></a>
+    </nav>
+  </aside>
+
+  <!-- ============ Main ============ -->
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-end gap-4 px-4 shrink-0">
+      <button type="button" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
+        <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
+        <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
+      </button>
+      <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+    </header>
+
+    <main class="p-6">
+
+      <!-- タイトル -->
+      <div class="flex items-center gap-8 mb-6">
+        <div class="flex-1 flex items-center">
+          <a href="index.html" title="ユーザー一覧に遷移" class="flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-100">
+            <img src="assets/icons/arrow-left.svg" class="w-4 h-3" alt="戻る">
+          </a>
+          <h1 class="text-2xl font-semibold text-gray-900">ユーザー詳細</h1>
+        </div>
+        <button type="button" data-open-modal="distribute-course-modal" class="inline-flex items-center gap-1 px-3 py-2 rounded-md bg-brand text-sm text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">
+          <img src="assets/icons/arrow-up-to-line.svg" class="w-4 h-4" alt="">
+          コースを配布
+        </button>
+      </div>
+
+      <div class="flex items-start gap-6">
+
+        <!-- ============ 左: プロフィールカード ============ -->
+        <div class="w-[240px] shrink-0 bg-white border border-slate-200 rounded-md shadow overflow-hidden">
+          <div class="flex flex-col items-center gap-2 px-6 py-5">
+            <img src="assets/img/avatar-large.png" alt="" class="w-[100px] h-[100px] rounded-full object-cover">
+            <p class="text-lg font-medium text-brand">withdom tarou</p>
+            <span class="px-3 py-1 rounded-full bg-blue-100 text-xs text-blue-800">一般</span>
+          </div>
+          <div class="border-t border-slate-200 px-6 py-6 flex flex-col gap-6">
+            <div class="flex flex-col gap-1">
+              <p class="text-xs text-gray-500">ニックネーム</p>
+              <p class="text-sm text-gray-900 text-right">withta</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="text-xs text-gray-500">メールアドレス</p>
+              <p class="text-sm text-gray-900 text-right break-all">jane.coopep@example.com</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="text-xs text-gray-500">グループ</p>
+              <span class="self-start px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800">Dev</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="text-xs text-gray-500">登録日</p>
+              <p class="text-sm text-gray-900 text-right">2019/04/04 12:21</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="text-xs text-gray-500">最終利用日</p>
+              <p class="text-sm text-gray-900 text-right">2026/05/26 18:04</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p class="text-xs text-gray-500">ID</p>
+              <p class="text-sm text-gray-900 text-right">123456789</p>
+            </div>
+            <button type="button" data-open-modal="user-detail-modal" class="w-full text-center text-xs text-sky-600 hover:underline">詳細を確認</button>
+          </div>
+          <div class="bg-slate-50 border-t border-slate-200 flex flex-col gap-2 px-6 py-4">
+            <a href="edit.html" class="flex items-center justify-center gap-1 px-2 py-2 rounded-md border border-slate-300 bg-white text-xs text-gray-900 hover:bg-slate-50">
+              <img src="assets/icons/pen-to-square.svg" class="w-4 h-4" alt="">
+              プロフィールを編集する
+            </a>
+            <button type="button" data-open-modal="logout-modal" class="flex items-center justify-center gap-1 px-2 py-2 rounded-md border border-red-600 bg-white text-xs text-red-600 hover:bg-red-50">
+              <img src="assets/icons/arrow-left-from-bracket.svg" class="w-4 h-4" alt="">
+              強制ログアウト
+            </button>
+            <button type="button" data-open-modal="delete-account-modal" class="flex items-center justify-center gap-1 px-2 py-2 rounded-md border border-red-600 bg-white text-xs text-red-600 hover:bg-red-50">
+              <img src="assets/icons/trash-can.svg" class="w-4 h-4" alt="">
+              アカウントを削除する
+            </button>
+          </div>
+        </div>
+
+        <!-- ============ 右: タブ+テーブル ============ -->
+        <div class="flex-1 min-w-0">
+
+          <!-- タブ -->
+          <div class="flex text-sm whitespace-nowrap overflow-x-auto">
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-brand rounded-t-md text-brand font-semibold" data-tab="billing">課金記録<span class="font-normal">8</span></button>
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-slate-300 text-slate-500" data-tab="distribution">コース配布通知<span>4</span></button>
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-slate-300 text-slate-500" data-tab="download">ダウンロード<span>2</span></button>
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-slate-300 text-slate-500" data-tab="free">無料コース<span>12</span></button>
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-slate-300 text-slate-500" data-tab="pro">プロコース<span>3</span></button>
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-slate-300 text-slate-500" data-tab="offline">対面コース<span>1</span></button>
+            <button type="button" class="detail-tab-btn flex items-center gap-1 h-[52px] px-4 border-b-2 border-slate-300 text-slate-500" data-tab="completed">完了コース<span>2</span></button>
+          </div>
+
+          <!-- 課金記録タブ -->
+          <div id="tab-billing" class="detail-tab-panel bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <span class="px-3 py-2 rounded-full bg-amber-100 text-xs text-amber-800">入金確認待ち 3件</span>
+              <span class="px-3 py-2 rounded-full bg-slate-100 text-xs text-slate-500">キャンセル済み 2件</span>
+              <div class="flex-1 flex items-end justify-end gap-1">
+                <span class="text-[11px] text-slate-400">合計金額</span>
+                <span class="text-lg font-semibold text-slate-500">100,000,000</span>
+                <span class="text-[11px] text-slate-400">円</span>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="w-[82px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                    <th class="w-[136px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額</th>
+                    <th class="w-[129px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額（JPY換算）</th>
+                    <th class="w-[152px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="w-[88px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">決済方法</th>
+                    <th class="w-[116px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">銀行振込用番号</th>
+                    <th class="w-[116px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">銀行振込<br>銀行名義人</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">購入日時</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">キャンセル日時</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講期限日時</th>
+                    <th class="w-[140px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">状態</th>
+                    <th class="w-[99px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">操作</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1202</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">39,800円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">39,800円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">実践Webデザイン基礎講座</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/01/15 09:12</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/01/15 09:12</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">受講可能</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1198</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">6,789円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">6,789円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">動画編集マスターコース</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">銀行振込</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">タナカ サトシ</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/02/03 14:40</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/02/03 14:40</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-yellow-100 text-xs text-yellow-800">入金確認待ち</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1187</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">12,000円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">12,000円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ビジネス英語スピーキング講座</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/11/20 10:05</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/12/01 08:00</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-red-100 text-xs text-red-800">受講不可</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1155</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">98,000円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">98,000円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">データ分析実践プログラム</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/09/08 16:22</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/09/08 16:22</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">受講可能</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ページネーション -->
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">
+                25件
+                <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+              </button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 8件</p>
+              <div class="flex items-center gap-1 shrink-0">
+                <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- コース配布通知タブ(課金記録と同一の列構成) -->
+          <div id="tab-distribution" class="detail-tab-panel hidden bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <span class="px-3 py-2 rounded-full bg-amber-100 text-xs text-amber-800">入金確認待ち 1件</span>
+              <span class="px-3 py-2 rounded-full bg-slate-100 text-xs text-slate-500">キャンセル済み 0件</span>
+              <div class="flex-1 flex items-end justify-end gap-1">
+                <span class="text-[11px] text-slate-400">合計金額</span>
+                <span class="text-lg font-semibold text-slate-500">39,800</span>
+                <span class="text-[11px] text-slate-400">円</span>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="w-[82px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                    <th class="w-[136px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額</th>
+                    <th class="w-[129px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額（JPY換算）</th>
+                    <th class="w-[152px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="w-[88px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">決済方法</th>
+                    <th class="w-[116px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">銀行振込用番号</th>
+                    <th class="w-[116px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">銀行振込<br>銀行名義人</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">購入日時</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">キャンセル日時</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講期限日時</th>
+                    <th class="w-[140px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">状態</th>
+                    <th class="w-[99px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">操作</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1301</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">39,800円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">39,800円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">実践Webデザイン基礎講座</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">銀行振込</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1234567</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">タナカ サトシ</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/06/10 10:00</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/06/10 10:00</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-yellow-100 text-xs text-yellow-800">入金確認待ち</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1288</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">6,789円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">6,789円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">動画編集マスターコース</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/05/02 09:30</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/05/02 09:30</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">受講可能</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">25件<img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt=""></button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 4件</p>
+              <div class="flex items-center gap-1 shrink-0"><button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button></div>
+            </div>
+          </div>
+
+          <!-- ダウンロードタブ(課金記録と同一の列構成) -->
+          <div id="tab-download" class="detail-tab-panel hidden bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <span class="px-3 py-2 rounded-full bg-amber-100 text-xs text-amber-800">入金確認待ち 0件</span>
+              <span class="px-3 py-2 rounded-full bg-slate-100 text-xs text-slate-500">キャンセル済み 0件</span>
+              <div class="flex-1 flex items-end justify-end gap-1">
+                <span class="text-[11px] text-slate-400">合計金額</span>
+                <span class="text-lg font-semibold text-slate-500">12,000</span>
+                <span class="text-[11px] text-slate-400">円</span>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="w-[82px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                    <th class="w-[136px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額</th>
+                    <th class="w-[129px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額（JPY換算）</th>
+                    <th class="w-[152px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="w-[88px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">決済方法</th>
+                    <th class="w-[116px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">銀行振込用番号</th>
+                    <th class="w-[116px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">銀行振込<br>銀行名義人</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">購入日時</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">キャンセル日時</th>
+                    <th class="w-[149px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講期限日時</th>
+                    <th class="w-[140px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">状態</th>
+                    <th class="w-[99px] h-16 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">操作</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1150</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">12,000円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">12,000円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ビジネス英語スピーキング講座</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジット</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/08/14 13:15</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/08/14 13:15</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">受講可能</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1102</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">0円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">0円</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">データ分析実践プログラム(体験版)</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/06/01 08:00</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">受講可能</span></td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">25件<img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt=""></button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 2件</p>
+              <div class="flex items-center gap-1 shrink-0"><button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button></div>
+            </div>
+          </div>
+
+          <!-- 無料コースタブ -->
+          <div id="tab-free" class="detail-tab-panel hidden bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center justify-end px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter">
+                <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
+                ダウンロード
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="w-[82px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                    <th class="w-[152px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="w-[88px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">決済方法</th>
+                    <th class="w-[149px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">申し込み日時</th>
+                    <th class="w-[149px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講期限日時</th>
+                    <th class="flex-1 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">操作</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1401</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">はじめてのHTML/CSS入門</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/02/10 09:00</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1388</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">タイピング練習講座</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/01/22 14:30</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1365</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ビジネスマナー基礎</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/12/05 11:20</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline text-xs">詳細を見る</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">25件<img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt=""></button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 12件</p>
+              <div class="flex items-center gap-1 shrink-0"><button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button></div>
+            </div>
+          </div>
+
+          <!-- プロコースタブ -->
+          <div id="tab-pro" class="detail-tab-panel hidden bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center justify-end px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter">
+                <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
+                ダウンロード
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="flex-1 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="w-[152px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講開始日時</th>
+                    <th class="w-[185px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">進捗</th>
+                    <th class="w-[149px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講完了日時</th>
+                    <th class="w-[104px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">状態</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">実践Webデザイン基礎講座</a></td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/01/15 09:12</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">8/12のレクチャーを完了</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">受講可能</span></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">動画編集マスターコース</a></td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/02/03 14:40</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">15/15のレクチャーを完了</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/03/20 10:00</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-gray-100 text-xs text-gray-800">受講済み</span></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">データ分析実践プログラム</a></td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/09/08 16:22</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">3/20のレクチャーを完了</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-yellow-100 text-xs text-yellow-800">入金確認待ち</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">25件<img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt=""></button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 3件</p>
+              <div class="flex items-center gap-1 shrink-0"><button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button></div>
+            </div>
+          </div>
+
+          <!-- 対面コースタブ(プロコースと同一の列構成) -->
+          <div id="tab-offline" class="detail-tab-panel hidden bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center justify-end px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter">
+                <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
+                ダウンロード
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="flex-1 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="w-[152px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講開始日時</th>
+                    <th class="w-[184px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">進捗</th>
+                    <th class="w-[149px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講完了日時</th>
+                    <th class="w-[104px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">状態</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">ビジネス英語スピーキング講座(対面)</a></td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/11/20 10:05</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">4/4のレクチャーを完了</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/12/18 17:00</td>
+                    <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-gray-100 text-xs text-gray-800">受講済み</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">25件<img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt=""></button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 1件</p>
+              <div class="flex items-center gap-1 shrink-0"><button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button></div>
+            </div>
+          </div>
+
+          <!-- 完了コースタブ -->
+          <div id="tab-completed" class="detail-tab-panel hidden bg-white border border-slate-200 rounded-b-lg rounded-tr-lg overflow-hidden">
+            <div class="flex items-center justify-end px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-brand bg-white text-sm text-brand hover:bg-brand-lighter">
+                <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
+                ダウンロード
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="border-collapse text-sm w-full">
+                <thead>
+                  <tr class="bg-slate-100">
+                    <th class="w-[92px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                    <th class="flex-1 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                    <th class="flex-1 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講開始日時</th>
+                    <th class="flex-1 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">受講完了日時</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1102</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">動画編集マスターコース</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/02/03 14:40</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2024/03/20 10:00</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1055</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">ビジネス英語スピーキング講座(対面)</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/11/20 10:05</td>
+                    <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2023/12/18 17:00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+              <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900">25件<img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt=""></button>
+              <p class="flex-1 text-sm text-gray-700 text-right">1 / 2件</p>
+              <div class="flex items-center gap-1 shrink-0"><button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand">1</button></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============ モーダル: 強制ログアウト ============ -->
+<div id="logout-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px]">
+    <div class="relative border-b border-slate-200 py-2">
+      <h2 class="text-base font-semibold text-slate-900 text-center">強制ログアウト</h2>
+      <button type="button" data-close-modal="logout-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex flex-col items-center gap-4">
+      <p class="text-sm text-gray-900">このアカウントを強制ログアウトしますか？</p>
+      <div class="flex gap-4">
+        <button type="button" data-close-modal="logout-modal" class="w-[180px] px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="logout-confirm-btn" class="w-[180px] px-6 py-3 rounded-md bg-red-600 text-sm font-semibold text-slate-50 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">実行する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: アカウントの削除 ============ -->
+<div id="delete-account-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[440px]">
+    <div class="relative border-b border-slate-200 py-2">
+      <h2 class="text-base font-semibold text-slate-900 text-center">アカウントの削除</h2>
+      <button type="button" data-close-modal="delete-account-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-6 pt-4 pb-4 flex flex-col items-center gap-4">
+      <p class="text-sm text-gray-900 text-center leading-5">このアカウントを削除します。<br>この操作は取り消せません。</p>
+      <div class="flex gap-4">
+        <button type="button" data-close-modal="delete-account-modal" class="w-[180px] px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="delete-account-confirm-btn" class="w-[180px] px-6 py-3 rounded-md bg-red-600 text-sm font-semibold text-slate-50 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">削除する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: ユーザー詳細情報 ============ -->
+<div id="user-detail-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[600px] max-h-[85vh] flex flex-col overflow-hidden">
+    <div class="relative border-b border-slate-200 py-2 shrink-0">
+      <h2 class="text-base font-semibold text-slate-900 text-center">ユーザー詳細情報</h2>
+      <button type="button" data-close-modal="user-detail-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-8 pt-5 pb-4 flex-1 overflow-y-auto flex flex-col gap-5 items-center">
+      <div class="flex flex-col items-center gap-2">
+        <img src="assets/img/avatar-large.png" alt="" class="w-[100px] h-[100px] rounded-full object-cover">
+        <p class="text-lg font-medium text-brand">withdom tarou</p>
+        <span class="px-3 py-1 rounded-full bg-blue-100 text-xs text-blue-800">一般</span>
+      </div>
+      <table class="w-full border border-slate-200 rounded-md text-sm">
+        <tbody>
+          <tr class="border-t border-slate-200 first:border-t-0">
+            <th class="w-32 bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">ID</th>
+            <td class="p-4 text-gray-500">123456789</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">氏名</th>
+            <td class="p-4 text-gray-500">withdom tarou</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">メールアドレス</th>
+            <td class="p-4 text-gray-500">jane.coopep@example.com</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">グループ</th>
+            <td class="p-4"><span class="px-3 py-1 rounded-full bg-slate-100 text-xs text-slate-800">Dev</span></td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">権限</th>
+            <td class="p-4 text-gray-500">管理者</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">招待権限</th>
+            <td class="p-4 text-gray-500">有</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">パスワード要求</th>
+            <td class="p-4 text-gray-500">○</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">受講コース数</th>
+            <td class="p-4"><a href="#" class="text-sky-600 hover:underline">1</a></td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">完了レクチャー数</th>
+            <td class="p-4"><a href="#" class="text-sky-600 hover:underline">1</a></td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">会社名</th>
+            <td class="p-4 text-gray-500">株式会社wisdom</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">法人番号</th>
+            <td class="p-4 text-gray-500">012201</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">言語</th>
+            <td class="p-4 text-gray-500">ja</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">通貨</th>
+            <td class="p-4 text-gray-500">jpy</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">請求方法</th>
+            <td class="p-4 text-gray-500">クレジット</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">登録日時</th>
+            <td class="p-4 text-gray-500">2022/03/24 12:21</td>
+          </tr>
+          <tr class="border-t border-slate-200">
+            <th class="bg-slate-100 text-left text-xs font-semibold text-gray-500 p-4 align-top">最終利用日時</th>
+            <td class="p-4 text-gray-500">2022/03/24 12:21</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ モーダル: コースを配布 ============ -->
+<div id="distribute-course-modal" class="modal-backdrop hidden fixed inset-0 z-40 items-center justify-center bg-slate-900/50 p-4">
+  <div class="bg-white rounded-md shadow ring-1 ring-black/5 w-full max-w-[600px] max-h-[90vh] flex flex-col overflow-hidden">
+    <div class="relative border-b border-slate-200 py-2 shrink-0">
+      <h2 class="text-base font-semibold text-slate-900 text-center">コースを配布</h2>
+      <button type="button" data-close-modal="distribute-course-modal" class="absolute right-1 top-1 flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+        <img src="assets/icons/xmark.svg" class="w-3 h-3" alt="閉じる">
+      </button>
+    </div>
+    <div class="px-8 pt-4 pb-4 flex-1 overflow-y-auto flex flex-col items-center gap-4">
+      <div class="bg-slate-100 rounded-full p-1 flex items-center">
+        <button type="button" class="distribute-segment-btn px-8 py-2 rounded-full bg-white text-sm font-semibold text-brand" data-segment="pro">プロコース</button>
+        <button type="button" class="distribute-segment-btn px-8 py-2 rounded-full text-sm text-slate-500" data-segment="offline">対面コース</button>
+      </div>
+
+      <div class="bg-slate-50 rounded-md px-10 py-4 flex flex-col items-center gap-4 w-full">
+        <p class="text-sm font-semibold text-gray-900">コースIDを入力</p>
+        <div class="w-full flex flex-col gap-2">
+          <label class="flex items-center gap-1 p-2 rounded-md border border-gray-300 bg-white">
+            <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+            <input type="text" placeholder="コースIDを入力してください。" class="flex-1 min-w-0 text-sm text-gray-900 placeholder-gray-300 outline-none">
+          </label>
+          <p id="distribute-course-caption" class="text-xs text-gray-600 text-center">※ 対面コースのコースIDを指定することはできません。</p>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-md w-full flex flex-col">
+          <div class="p-4 flex flex-col gap-3">
+            <label class="flex items-start gap-1">
+              <input type="checkbox" id="schedule-checkbox" checked class="mt-0.5 w-4 h-4 rounded border-gray-300 accent-brand">
+              <span class="text-xs font-semibold text-gray-900">スケジュールを設定する</span>
+            </label>
+            <div class="flex gap-2">
+              <label class="schedule-field flex-1 flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white">
+                <img src="assets/icons/calendar.svg" class="w-4 h-4 shrink-0" alt="">
+                <span class="flex-1 text-sm text-gray-900">今日</span>
+                <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+              </label>
+              <label class="schedule-field flex-1 flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white">
+                <img src="assets/icons/clock.svg" class="w-4 h-4 shrink-0" alt="">
+                <span class="flex-1 text-sm text-gray-900">13:00</span>
+                <img src="assets/icons/angle-down.svg" class="w-4 h-4" alt="">
+              </label>
+            </div>
+          </div>
+          <div class="border-t border-slate-200 p-4 flex flex-col gap-3">
+            <div class="flex items-center gap-1">
+              <input type="checkbox" id="deadline-checkbox" class="w-4 h-4 rounded border-gray-300 accent-brand">
+              <span class="flex-1 text-xs font-semibold text-gray-900">受講期限を設定する</span>
+              <div class="flex items-center rounded-sm overflow-hidden border border-brand">
+                <button type="button" class="deadline-mode-btn h-6 px-2 text-xs text-brand bg-white" data-mode="datetime">日時で指定する</button>
+                <button type="button" class="deadline-mode-btn h-6 px-2 text-xs text-slate-500 bg-white border-l border-slate-300" data-mode="period">期間で指定する</button>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <label class="deadline-field flex-1 flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-gray-100">
+                <img src="assets/icons/calendar.svg" class="w-4 h-4 shrink-0 opacity-40" alt="">
+                <span class="flex-1 text-sm text-gray-300">今日</span>
+                <img src="assets/icons/angle-down.svg" class="w-4 h-4 opacity-40" alt="">
+              </label>
+              <label class="deadline-field flex-1 flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-gray-100">
+                <img src="assets/icons/clock.svg" class="w-4 h-4 shrink-0 opacity-40" alt="">
+                <span class="flex-1 text-sm text-gray-300">13時</span>
+                <img src="assets/icons/angle-down.svg" class="w-4 h-4 opacity-40" alt="">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <label class="flex items-center gap-1 self-start">
+          <input type="checkbox" class="w-4 h-4 rounded border-gray-300">
+          <span class="text-xs text-gray-900">コース受講のお知らせを受講者にメールで通知する</span>
+        </label>
+      </div>
+
+      <div class="flex gap-4 w-full">
+        <button type="button" data-close-modal="distribute-course-modal" class="flex-1 px-6 py-3 rounded-md border border-slate-300 bg-white text-sm font-semibold text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">キャンセル</button>
+        <button type="button" id="distribute-course-confirm-btn" class="flex-1 px-6 py-3 rounded-md bg-brand text-sm font-semibold text-slate-50 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-brand/40">コースを配布</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 w-80"></div>
+
+<script>
+(function () {
+  document.querySelectorAll('.detail-tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.detail-tab-btn').forEach(function (b) {
+        b.classList.remove('border-brand', 'text-brand', 'font-semibold');
+        b.classList.add('border-slate-300', 'text-slate-500');
+      });
+      btn.classList.remove('border-slate-300', 'text-slate-500');
+      btn.classList.add('border-brand', 'text-brand', 'font-semibold');
+
+      document.querySelectorAll('.detail-tab-panel').forEach(function (p) { p.classList.add('hidden'); });
+      document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+
+  // ---- モーダル ----
+  function openModal(id) { var el = document.getElementById(id); el.classList.remove('hidden'); el.classList.add('flex'); }
+  function closeModal(id) { var el = document.getElementById(id); el.classList.add('hidden'); el.classList.remove('flex'); }
+  document.querySelectorAll('[data-open-modal]').forEach(function (btn) { btn.addEventListener('click', function () { openModal(btn.dataset.openModal); }); });
+  document.querySelectorAll('[data-close-modal]').forEach(function (btn) { btn.addEventListener('click', function () { closeModal(btn.dataset.closeModal); }); });
+  document.querySelectorAll('.modal-backdrop').forEach(function (bd) {
+    bd.addEventListener('click', function (e) { if (e.target === bd) { bd.classList.add('hidden'); bd.classList.remove('flex'); } });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop').forEach(function (bd) { if (!bd.classList.contains('hidden')) { bd.classList.add('hidden'); bd.classList.remove('flex'); } });
+    }
+  });
+
+  // ---- トースト ----
+  var toastContainer = document.getElementById('toast-container');
+  function showToast(message) {
+    var el = document.createElement('div');
+    el.className = 'flex items-start gap-2 bg-white border border-slate-200 rounded-lg shadow px-4 py-3 text-sm text-gray-700';
+    el.innerHTML = '<span class="mt-1 w-2 h-2 rounded-full bg-green-500 shrink-0"></span><span>' + message + '</span>';
+    toastContainer.appendChild(el);
+    setTimeout(function () { el.remove(); }, 3500);
+  }
+
+  document.getElementById('logout-confirm-btn').addEventListener('click', function () {
+    closeModal('logout-modal');
+    showToast('強制ログアウトを実行しました。');
+  });
+  document.getElementById('delete-account-confirm-btn').addEventListener('click', function () {
+    closeModal('delete-account-modal');
+    showToast('アカウントを削除しました。');
+  });
+
+  // ---- コースを配布モーダル ----
+  var distributeCaption = document.getElementById('distribute-course-caption');
+  document.querySelectorAll('.distribute-segment-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.distribute-segment-btn').forEach(function (b) {
+        b.classList.remove('bg-white', 'text-brand', 'font-semibold');
+        b.classList.add('text-slate-500');
+      });
+      btn.classList.add('bg-white', 'text-brand', 'font-semibold');
+      btn.classList.remove('text-slate-500');
+      distributeCaption.textContent = btn.dataset.segment === 'pro'
+        ? '※ 対面コースのコースIDを指定することはできません。'
+        : '※ プロコースのコースIDを指定することはできません。';
+    });
+  });
+
+  function setFieldEnabled(selector, enabled) {
+    document.querySelectorAll(selector).forEach(function (field) {
+      field.classList.toggle('bg-white', enabled);
+      field.classList.toggle('bg-gray-100', !enabled);
+      field.querySelectorAll('img').forEach(function (img) { img.classList.toggle('opacity-40', !enabled); });
+      var span = field.querySelector('span');
+      if (span) { span.classList.toggle('text-gray-900', enabled); span.classList.toggle('text-gray-300', !enabled); }
+    });
+  }
+  document.getElementById('schedule-checkbox').addEventListener('change', function (e) {
+    setFieldEnabled('.schedule-field', e.target.checked);
+  });
+  var deadlineCheckbox = document.getElementById('deadline-checkbox');
+  deadlineCheckbox.addEventListener('change', function (e) {
+    setFieldEnabled('.deadline-field', e.target.checked);
+    document.querySelectorAll('.deadline-mode-btn').forEach(function (b) { b.disabled = !e.target.checked; });
+  });
+  document.querySelectorAll('.deadline-mode-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.deadline-mode-btn').forEach(function (b) {
+        b.classList.remove('text-brand');
+        b.classList.add('text-slate-500');
+      });
+      btn.classList.add('text-brand');
+      btn.classList.remove('text-slate-500');
+    });
+  });
+  document.getElementById('distribute-course-confirm-btn').addEventListener('click', function () {
+    closeModal('distribute-course-modal');
+    showToast('コースを配布しました。');
+  });
+})();
+</script>
+
+</body>
+</html>
