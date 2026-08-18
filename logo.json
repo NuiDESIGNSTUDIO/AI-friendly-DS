@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "source": "Figma metadata scan (canvas '03_Logo')",
+    "figmaFile": "https://www.figma.com/design/3IHJOBCeBTUrU6EqMpjART/Sharewis-Design-System?node-id=2-1971",
+    "lastUpdated": "2026-08-17",
+    "usage": "ロゴはFigma上のベクターシンボル/フレーム。実装時に download_assets(fileKey, nodeId) でSVGを取得する。mock配下では現状 sharewis-logo.png (ラスター画像) が使われているが、正はここで参照するベクターロゴである点に注意。"
+  },
+  "fileKey": "3IHJOBCeBTUrU6EqMpjART",
+  "logos": [
+    {
+      "name": "ShareWis_logo",
+      "nodeId": "2:2020",
+      "brand": "ShareWis",
+      "note": "管理画面(mock/admins配下)で使用しているブランド。現状mockはPNGラスター(sharewis-logo.png)を使用中で、Figma正のベクターと差し替え検討対象。"
+    },
+    {
+      "name": "logo-1-1",
+      "nodeId": "2:2021",
+      "brand": "WisdomBase",
+      "note": "別ブランド(WisdomBase)のロゴ。現行mock実装では未使用。"
+    }
+  ]
+}

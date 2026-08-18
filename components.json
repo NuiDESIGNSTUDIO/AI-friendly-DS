@@ -2,7 +2,7 @@
   "meta": {
     "source": "Figma metadata scan (canvas '01_UI kit')",
     "figmaFile": "https://www.figma.com/design/3IHJOBCeBTUrU6EqMpjART/Sharewis-Design-System?node-id=2-120",
-    "lastUpdated": "2026-08-07",
+    "lastUpdated": "2026-08-17",
     "usage": "Storybookが存在しないため、コンポーネント実装の正解ソースとしてFigma node-idを直接参照する。get_design_context(fileKey, nodeId) でコード/スクリーンショットを取得できる。"
   },
   "fileKey": "3IHJOBCeBTUrU6EqMpjART",
@@ -58,6 +58,21 @@
       "section": "Input"
     },
     {
+      "name": "editer",
+      "nodeId": "164:943",
+      "section": "Input"
+    },
+    {
+      "name": "_Floala_WYSIWYG HTML Editor",
+      "nodeId": "164:942",
+      "section": "Input"
+    },
+    {
+      "name": "Header",
+      "nodeId": "2:397",
+      "section": "Navigation"
+    },
+    {
       "name": "Vertical Navigation",
       "nodeId": "2:379",
       "section": "Navigation"
@@ -66,6 +81,11 @@
       "name": "Sidebar",
       "nodeId": "113:1197",
       "section": "Navigation"
+    },
+    {
+      "name": "Breadcrumb",
+      "nodeId": "2:409",
+      "section": "Breadcrumb"
     },
     {
       "name": "TableBulkActionArea",
@@ -95,6 +115,16 @@
     {
       "name": "Label_status",
       "nodeId": "140:399",
+      "section": "Label&Badge"
+    },
+    {
+      "name": "Tag",
+      "nodeId": "129:1879",
+      "section": "Label&Badge"
+    },
+    {
+      "name": "Badge",
+      "nodeId": "2:778",
       "section": "Label&Badge"
     },
     {
@@ -211,6 +241,11 @@
       "name": "_Lecture",
       "nodeId": "271:575",
       "section": "Archive"
+    },
+    {
+      "name": "Footer",
+      "nodeId": "231:792",
+      "section": "Footer"
     }
   ]
 }

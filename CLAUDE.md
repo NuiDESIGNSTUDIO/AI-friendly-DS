@@ -9,6 +9,7 @@
 4. **[components.json](./components.json)** — Figma「01_UI kit」のコンポーネント一覧(node-id付き)。Storybookが無いため、これが正解コードの参照元。
 5. **[icons.json](./icons.json)** — Figma「02_Icon」のアイコン一覧(node-id付き)。使用時はnode-idでSVGを取得する。
 6. **[screens.json](./screens.json)** — 人間デザイナー作成の参考画面カタログ(node-id付き)。近い役割の画面があれば構成・レイアウトの参考にする。
+7. **[logo.json](./logo.json)** — Figma「03_Logo」のロゴ一覧(node-id付き)。mock配下は現状PNGラスターを使用しているため、正のベクターと差異が無いか確認する。
 
 ## 絶対遵守ルール
 - WORKFLOW.md の Step1（3案提案）を飛ばして、いきなりコードを書かない。
@@ -22,6 +23,7 @@
 - コンポーネントカタログ: `components.json`(Figma「01_UI kit」の全コンポーネントとnode-id)
 - アイコンカタログ: `icons.json`(Figma「02_Icon」の全アイコンとnode-id、`assets/icons/12px/`に実SVGサンプルあり)
 - 参考画面カタログ: `screens.json`(人間デザイナー作成の参考画面。`assets/reference-screens/`に代表フレームのスクリーンショットあり)
+- ロゴカタログ: `logo.json`(Figma「03_Logo」の全ロゴとnode-id)
 - サイト全体モック: `mock/`(fix済みデザインのみ。実装と差分のない最新状態を保つ。詳細は `mock/README.md`)
 - 作業中フォルダ: `drafts/`(fix前の検討中ファイル。詳細は `drafts/README.md`)
 - ASIS参照リポジトリ: `reference/sharewis-act/`（本番サイトのコードをローカルクローン、Git管理外。現行画面・コンポーネントの実装確認に使う）

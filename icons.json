@@ -2,7 +2,7 @@
   "meta": {
     "source": "Figma metadata scan (canvas '02_Icon', Font Awesome based icon set)",
     "figmaFile": "https://www.figma.com/design/3IHJOBCeBTUrU6EqMpjART/Sharewis-Design-System?node-id=4-319",
-    "lastUpdated": "2026-08-07",
+    "lastUpdated": "2026-08-17",
     "usage": "各アイコンはFigma上のsymbolノード。実装時に download_assets(fileKey, nodeId) でSVGを取得する。svgAssetsは1回の呼び出しにつき20件までのキャップがあるため、個別のnodeIdを指定して取得する。"
   },
   "fileKey": "3IHJOBCeBTUrU6EqMpjART",
@@ -35,6 +35,11 @@
     {
       "name": "copy_12px",
       "nodeId": "271:533",
+      "size": "12px"
+    },
+    {
+      "name": "clone-plus_12px",
+      "nodeId": "293:7",
       "size": "12px"
     },
     {
@@ -515,6 +520,11 @@
     {
       "name": "paper-plane_16px",
       "nodeId": "266:536",
+      "size": "16px"
+    },
+    {
+      "name": "clone-plus_16px",
+      "nodeId": "293:6",
       "size": "16px"
     }
   ]
