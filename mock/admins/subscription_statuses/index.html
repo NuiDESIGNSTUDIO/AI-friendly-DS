@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定期課金一覧 | Sharewis管理画面</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { DEFAULT: '#00ABC9', light: '#33BCD4', lighter: '#E5F7FA' },
+          gray: {50:'#F9FAFB',100:'#F3F4F6',200:'#E5E7EB',300:'#D1D5DC',400:'#99A1AF',500:'#6A7282',600:'#4A5565',700:'#364153',800:'#1E2939',900:'#101828',950:'#030712'},
+          slate: {50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CAD5E2',400:'#90A1B9',500:'#62748E',600:'#45556C',700:'#314158',800:'#1D293D',900:'#0F172B',950:'#020618'},
+          sky: {50:'#F0F9FF',100:'#DFF2FE',200:'#B8E6FE',300:'#74D4FF',400:'#00BCFF',500:'#00A6F4',600:'#0084D1',700:'#0069A8',800:'#00598A',900:'#024A70',950:'#052F4A'},
+          red: {50:'#FEF2F2',100:'#FFE2E2',200:'#FFC9C9',300:'#FFA2A2',400:'#FF6467',500:'#FB2C36',600:'#E7000B',700:'#C10007',800:'#9F0712',900:'#82181A',950:'#460809'},
+          green: {50:'#F0FDF4',100:'#DCFCE7',200:'#B9F8CF',300:'#7BF1A8',400:'#05DF72',500:'#00C951',600:'#00A63E',700:'#008236',800:'#016630',900:'#0D542B',950:'#052E16'},
+          yellow: {100:'#FEF9C2',800:'#894B00'}
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+<div class="flex min-h-screen">
+
+  <!-- ============ Sidebar ============ -->
+  <aside class="w-[212px] shrink-0 bg-white border-r border-slate-200 flex flex-col pt-5 pb-4">
+    <div class="px-4 pb-5">
+      <img src="assets/img/sharewis-logo.png" alt="ShareWis" class="h-10 w-auto">
+    </div>
+    <nav class="px-2 flex flex-col gap-1">
+      <a href="#" class="px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50">TOP</a>
+
+      <!-- 売上: 開閉可能セクション(現在地) -->
+      <div>
+        <div class="flex items-center gap-2 px-3 py-2 rounded-t-md bg-slate-50 text-sm text-gray-600">
+          <span class="flex-1">売上</span>
+          <img src="assets/icons/angle-down.svg" class="w-4 h-4 rotate-180" alt="">
+        </div>
+        <div class="bg-slate-50 rounded-b-md pl-4 pr-2 pb-2 flex flex-col">
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">課金記録一覧</a>
+          <a href="index.html" class="px-1 py-1 rounded-md text-xs text-sky-600 font-medium">定期課金一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">入会費課金記録一覧</a>
+          <a href="#" class="px-1 py-1 rounded-md text-xs text-gray-600 hover:text-gray-900">領収書設定</a>
+        </div>
+      </div>
+
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セール</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">クーポン</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="../users/index.html" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">ユーザー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="../courses/index.html" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コース配布</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">自動ワークフロー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レポート</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">レビュー</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">コメント</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">サイト</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50"><span class="flex-1">セキュリティ</span><img src="assets/icons/angle-down.svg" class="w-4 h-4" alt=""></a>
+
+      <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-600 hover:bg-slate-50 mt-2"><span>ヘルプセンター</span><img src="assets/icons/arrow-up-right-from-square.svg" class="w-4 h-4" alt=""></a>
+    </nav>
+  </aside>
+
+  <!-- ============ Main ============ -->
+  <div class="flex-1 min-w-0 flex flex-col">
+
+    <!-- Header -->
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-end gap-4 px-4 shrink-0">
+      <button type="button" class="relative flex items-center justify-center w-8 h-8 rounded-lg hover:bg-slate-50">
+        <img src="assets/icons/bell.svg" class="w-4 h-4" alt="通知">
+        <span class="absolute -top-1 left-5 flex items-center justify-center w-4 h-4 rounded-full bg-brand text-slate-50 text-[11px] leading-4">2</span>
+      </button>
+      <img src="assets/img/avatar.png" alt="管理者アイコン" class="w-8 h-8 rounded-full object-cover">
+    </header>
+
+    <!-- Content -->
+    <main class="p-6">
+
+      <!-- タイトル + サマリー + アクション -->
+      <div class="flex items-center gap-6 mb-6">
+        <h1 class="flex-1 min-w-0 text-2xl font-semibold text-gray-900 whitespace-nowrap">定期課金一覧</h1>
+
+        <div class="shrink-0 text-right whitespace-nowrap">
+          <p class="text-xs text-gray-500">次回定期課金予定金額合計</p>
+          <p class="flex items-center justify-end gap-2 text-lg font-semibold text-gray-900">
+            ¥13,560
+            <span class="px-2 py-0.5 rounded-full bg-green-100 text-xs font-medium text-green-800">26件</span>
+          </p>
+        </div>
+
+        <div class="relative shrink-0">
+          <button type="button" id="download-btn" data-panel="download-panel" aria-expanded="false" class="inline-flex items-center gap-1 px-3 py-2 rounded-md border border-slate-300 bg-white text-sm text-gray-600 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40 whitespace-nowrap">
+            <img src="assets/icons/arrow-down-to-line.svg" class="w-4 h-4" alt="">
+            一覧をダウンロード
+          </button>
+          <div id="download-panel" class="dropdown-panel hidden absolute top-full right-0 mt-2 w-56 bg-white border border-slate-200 rounded-lg shadow p-1 z-30">
+            <a href="#" class="block px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-slate-50">Excelファイルをダウンロード</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-slate-50">CSVファイルをダウンロード</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- テーブルカード -->
+      <div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+
+        <!-- 検索・状態フィルタ -->
+        <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+          <label class="flex items-center gap-1 px-2 py-2 rounded-md border border-gray-300 bg-white w-[223px] focus-within:ring-2 focus-within:ring-brand/40">
+            <img src="assets/icons/magnifying-glass.svg" class="w-4 h-4 shrink-0" alt="">
+            <input type="text" placeholder="ID・コースタイトル・購入者名で検索" class="flex-1 min-w-0 text-sm text-gray-900 placeholder-gray-300 outline-none">
+          </label>
+
+          <div class="relative">
+            <button type="button" id="status-filter-btn" data-panel="status-filter-panel" aria-expanded="false" class="inline-flex items-center gap-1 px-3 py-2 rounded-full border border-gray-300 bg-white text-sm text-gray-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <span id="status-filter-label">すべての状態</span>
+              <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+            </button>
+            <div id="status-filter-panel" class="dropdown-panel hidden absolute top-full left-0 mt-2 w-52 bg-white border border-slate-200 rounded-lg shadow p-2 z-30">
+              <button type="button" class="status-select-option is-selected w-full flex items-center gap-1.5 pl-1.5 pr-3 py-2 rounded text-left bg-slate-50 hover:bg-slate-50 focus:outline-none" data-value="すべての状態">
+                <span class="check-icon shrink-0 flex items-center justify-center w-5 h-5"><img src="assets/icons/check_16px.svg" class="w-4 h-4" alt=""></span>
+                <span class="label-text flex-1 text-sm font-semibold text-gray-900">すべての状態 (37)</span>
+              </button>
+              <button type="button" class="status-select-option w-full flex items-center gap-1.5 pl-1.5 pr-3 py-2 rounded text-left bg-white hover:bg-slate-50 focus:outline-none" data-value="有効">
+                <span class="check-icon shrink-0 flex items-center justify-center w-5 h-5"><img src="assets/icons/check_16px.svg" class="w-4 h-4 hidden" alt=""></span>
+                <span class="label-text flex-1 text-sm font-normal text-gray-900">有効 (26)</span>
+              </button>
+              <button type="button" class="status-select-option w-full flex items-center gap-1.5 pl-1.5 pr-3 py-2 rounded text-left bg-white hover:bg-slate-50 focus:outline-none" data-value="一時停止">
+                <span class="check-icon shrink-0 flex items-center justify-center w-5 h-5"><img src="assets/icons/check_16px.svg" class="w-4 h-4 hidden" alt=""></span>
+                <span class="label-text flex-1 text-sm font-normal text-gray-900">一時停止 (0)</span>
+              </button>
+              <button type="button" class="status-select-option w-full flex items-center gap-1.5 pl-1.5 pr-3 py-2 rounded text-left bg-white hover:bg-slate-50 focus:outline-none" data-value="解約済み">
+                <span class="check-icon shrink-0 flex items-center justify-center w-5 h-5"><img src="assets/icons/check_16px.svg" class="w-4 h-4 hidden" alt=""></span>
+                <span class="label-text flex-1 text-sm font-normal text-gray-900">解約済み (10)</span>
+              </button>
+              <button type="button" class="status-select-option w-full flex items-center gap-1.5 pl-1.5 pr-3 py-2 rounded text-left bg-white hover:bg-slate-50 focus:outline-none" data-value="入金確認待ち">
+                <span class="check-icon shrink-0 flex items-center justify-center w-5 h-5"><img src="assets/icons/check_16px.svg" class="w-4 h-4 hidden" alt=""></span>
+                <span class="label-text flex-1 text-sm font-normal text-gray-900">入金確認待ち (1)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- テーブル本体 -->
+        <div class="overflow-x-auto">
+          <table id="subscriptions-table" class="border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-100">
+                <th class="w-[72px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">ID</th>
+                <th class="w-24 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">金額</th>
+                <th class="w-[120px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">お支払い方法</th>
+                <th class="w-20 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">課金回数</th>
+                <th class="w-[220px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">コースタイトル</th>
+                <th class="w-[168px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">購入者アカウント名</th>
+                <th class="w-[120px] h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">お名前</th>
+                <th class="w-24 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">状態</th>
+                <th class="w-28 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">初回課金日</th>
+                <th class="w-28 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">次回課金予定日</th>
+                <th class="w-24 h-12 px-4 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">解約日</th>
+                <th class="sticky right-0 z-10 bg-slate-100 w-16 h-12 px-4"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">527</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥980</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">4</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_fees</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">有効</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/02/17</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/06/17</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">526</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥3,000</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">4</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_fees</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">有効</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/02/17</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/06/17</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">515</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥980</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">3</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_20260121</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">有効</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/01/21</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/04/21</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">514</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥100</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_20260121</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-red-100 text-xs text-red-800">解約済み</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/01/21</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/01/21</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">494</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥500</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_shomu</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-red-100 text-xs text-red-800">解約済み</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/10/28</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/12/19</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">493</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥700</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">3</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">はじめてのサブスクリプション</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">yen1</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">有効</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/10/27</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/01/01</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">470</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥980</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">1</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">はじめてのサブスクリプション</a></td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">wait_confirm_1</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-yellow-100 text-xs text-yellow-800">入金確認待ち</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/10/15</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">452</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥500</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">3</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_231</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">有効</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/10/09</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2026/01/09</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+              <tr class="hover:bg-slate-50">
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">362</td>
+                <td class="px-4 py-4 text-gray-900 whitespace-nowrap">¥3,000</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">クレジットカード</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">3</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><a href="#" class="text-sky-600 hover:underline">tsujikawa_motest</a></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="px-4 py-4 whitespace-nowrap"><span class="px-3 py-1 rounded-full bg-green-100 text-xs text-green-800">有効</span></td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/03/11</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">2025/06/11</td>
+                <td class="px-4 py-4 text-gray-500 whitespace-nowrap">-</td>
+                <td class="sticky right-0 z-10 bg-white px-4 py-4"><a href="#" class="text-sky-600 hover:underline whitespace-nowrap">詳細</a></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ページネーション -->
+        <div class="flex items-center gap-4 px-4 py-3 border-t border-slate-200">
+          <button type="button" class="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand/40">
+            25件
+            <img src="assets/icons/angle-down-dropdown.svg" class="w-4 h-4" alt="">
+          </button>
+          <p class="flex-1 text-sm text-gray-700 text-right">1 / 37件</p>
+          <div class="flex items-center gap-1 shrink-0">
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-40 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand/40" disabled>
+              <img src="assets/icons/angles-left.svg" class="w-[9px] h-auto" alt="最初のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 disabled:opacity-40 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-brand/40" disabled>
+              <img src="assets/icons/angle-left.svg" class="w-[5px] h-auto" alt="前のページへ">
+            </button>
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg text-xs font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand/40">1</button>
+            <button type="button" class="page-btn flex items-center justify-center w-10 h-10 rounded-lg bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">2</button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <img src="assets/icons/angle-right.svg" class="w-[6px] h-auto" alt="次のページへ">
+            </button>
+            <button type="button" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-brand/40">
+              <img src="assets/icons/angles-right.svg" class="w-[9px] h-auto" alt="最後のページへ">
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ---- ドロップダウン(ダウンロード/状態フィルタ) ----
+  var panelButtons = document.querySelectorAll('[data-panel]');
+  function closeAllPanels() {
+    panelButtons.forEach(function (btn) {
+      var panel = document.getElementById(btn.dataset.panel);
+      if (panel) panel.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+  panelButtons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var panel = document.getElementById(btn.dataset.panel);
+      var wasHidden = panel.classList.contains('hidden');
+      closeAllPanels();
+      if (wasHidden) {
+        panel.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.querySelectorAll('.dropdown-panel').forEach(function (p) {
+    p.addEventListener('click', function (e) { e.stopPropagation(); });
+  });
+  document.addEventListener('click', function () { closeAllPanels(); });
+
+  // ---- 状態フィルタ(Select Menu)の選択更新 ----
+  var statusFilterLabel = document.getElementById('status-filter-label');
+  var statusOptions = document.querySelectorAll('.status-select-option');
+  statusOptions.forEach(function (opt) {
+    opt.addEventListener('click', function (e) {
+      e.stopPropagation();
+      statusOptions.forEach(function (o) {
+        o.classList.remove('is-selected', 'bg-slate-50');
+        o.classList.add('bg-white');
+        o.querySelector('.check-icon img').classList.add('hidden');
+        o.querySelector('.label-text').classList.remove('font-semibold');
+        o.querySelector('.label-text').classList.add('font-normal');
+      });
+      opt.classList.add('is-selected', 'bg-slate-50');
+      opt.classList.remove('bg-white');
+      opt.querySelector('.check-icon img').classList.remove('hidden');
+      opt.querySelector('.label-text').classList.remove('font-normal');
+      opt.querySelector('.label-text').classList.add('font-semibold');
+      statusFilterLabel.textContent = opt.dataset.value;
+      closeAllPanels();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
